@@ -1,2 +1,5 @@
-# treaker
-Treaker - casual game
+# Treaker
+
+## About
+
+Casual game.
