@@ -10,18 +10,50 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "ActionMap",
+"language": "GDScript",
+"path": "res://src/action/ActionMap.gd"
+}, {
+"base": "Node",
+"class": "CameraSwitch",
+"language": "GDScript",
+"path": "res://src/debug/CameraSwitch.gd"
+}, {
+"base": "Reference",
+"class": "Pipe",
+"language": "GDScript",
+"path": "res://src/geometry/Pipe.gd"
+}, {
+"base": "Reference",
 "class": "Torus",
 "language": "GDScript",
 "path": "res://src/geometry/Torus.gd"
 } ]
 _global_script_class_icons={
+"ActionMap": "",
+"CameraSwitch": "",
+"Pipe": "",
 "Torus": "res://assets/tools/torus.svg"
 }
 
 [application]
 
 config/name="Treaker"
+run/main_scene="res://src/Main.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+Global="*res://src/Global.gd"
+
+[input]
+
+toggle_mouse_capture={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777253,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
