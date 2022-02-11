@@ -4,17 +4,19 @@ extends Spatial
 const MOUSE_SENSITIVITY = 0.002
 const MOVE_SPEED = 0.6
 
-var action   = load("res://src/action/ActionMap.gd").new()
-var rotate   = Vector3()
-var velocity = Vector3()
+var rotate     = Vector3()
+var velocity   = Vector3()
+var actionMap  = ActionMap.new()
+var actionList = {
+	"move_left":   [KEY_A, KEY_LEFT],
+	"move_right":  [KEY_D, KEY_RIGHT],
+	"use_shot":    [KEY_SPACE],
+	"use_ability": [KEY_SHIFT]
+}
 
 
 func _init():
-	action.addAction("move_left",   [KEY_A, KEY_LEFT])
-	action.addAction("move_right",  [KEY_D, KEY_RIGHT])
-	action.addAction("use_shot",    [KEY_SPACE])
-	action.addAction("use_ability", [KEY_SHIFT])
-	pass
+	actionMap.addActionList(actionList)
 
 
 func _ready():

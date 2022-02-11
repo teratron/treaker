@@ -19,8 +19,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 8 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="CSGTorus" type="CSGTorus" parent="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21903, -0.577476, -0.590072 )
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 6 )
