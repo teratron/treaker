@@ -1,76 +1,75 @@
 class_name ActionMap
 
 
-func addAction(action: String, code=[]) -> void:
+func addActionKey(action: String, code=[]) -> void:
 	var hasAction := InputMap.has_action(action)
 	var lengthCode = len(code)
-	var inputEventKey    = []
-#	var inputEventKey    = []
-#	var inputEventKey    = []
-#	var inputEventKey    = []
-	
+	var inputEventKey = []
 	inputEventKey.resize(lengthCode)
 	
 	if !hasAction:
 		InputMap.add_action(action)
 	
 	for i in lengthCode:
-		InputEventMouse
-		InputEventJoypadButton
-		#InputEventJoypadMotion
-
 		inputEventKey[i] = InputEventKey.new()
 		inputEventKey[i].scancode = code[i]
-		
 		InputMap.action_add_event(action, inputEventKey[i])
+	
+	return
+
+
+func addActionMouse(action: String, mask=[]) -> void:
+	var hasAction := InputMap.has_action(action)
+	var lengthCode = len(mask)
+	var inputEventMouse = []
+	inputEventMouse.resize(lengthCode)
+	
+	if !hasAction:
+		InputMap.add_action(action)
+	
+	for i in lengthCode:
+		inputEventMouse[i] = InputEventMouse.new()
+		inputEventMouse[i].button_mask = mask[i]
+		InputMap.action_add_event(action, inputEventMouse[i])
+	
+	return
+
+
+func addActionJoypadButton(action: String, index=[]) -> void:
+	var hasAction := InputMap.has_action(action)
+	var lengthCode = len(index)
+	var inputEventJoypadButton = []
+	inputEventJoypadButton.resize(lengthCode)
+	
+	if !hasAction:
+		InputMap.add_action(action)
+	
+	for i in lengthCode:
+		inputEventJoypadButton[i] = InputEventJoypadButton.new()
+		inputEventJoypadButton[i].button_index = index[i]
+		InputMap.action_add_event(action, inputEventJoypadButton[i])
+	
+	return
+
+
+func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
+	var hasAction := InputMap.has_action(action)
+	var inputEventJoypadMotion
+	
+	if !hasAction:
+		InputMap.add_action(action)
+	
+	inputEventJoypadMotion = InputEventJoypadMotion.new()
+	inputEventJoypadMotion.axis = axis
+	inputEventJoypadMotion.axis_value = axis_value
+	InputMap.action_add_event(action, inputEventJoypadMotion)
 	
 	return
 
 
 func addActionList(list: Dictionary) -> void:
 	for key in list:
-		addAction(key as String, list[key] as Array)
-		print(key)
+		addActionKey(key as String, list[key] as Array)
+		#print(key)
 	
 	return
-
-#move_forward={
-#"deadzone": 0.5,
-#"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
-#, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
-# ]
-#}
-#move_back={
-#"deadzone": 0.5,
-#"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
-#, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
-# ]
-#}
-#move_left={
-#"deadzone": 0.51,
-#"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
-#, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
-# ]
-#}
-#move_right={
-#"deadzone": 0.5,
-#"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
-#, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
-# ]
-#}
-#toggle_mouse_capture={
-#"deadzone": 0.5,
-#"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777253,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-#, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-# ]
-#}

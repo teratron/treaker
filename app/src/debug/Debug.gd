@@ -13,10 +13,27 @@ var actionList   = {
 	"ui_camera":     [KEY_C]
 }
 
+#var a = {
+#	"move_back": {
+var move_back = {
+		"deadzone": 0.5,
+		"events": [
+			{"device": InputEventKey,"code": [KEY_W, KEY_UP, KEY_KP_8]},
+#			{"device": InputEventJoypadButton, "button_index": 13},
+#			{"device": InputEventJoypadMotion,"axis": 1, "axis_value": 1.0}
+		]
+	}
+#}
+
+
+func moveBack():
+	for i in move_back["events"]:
+		print(i, move_back["events"])
+
 
 func _init():
 	actionMap.addActionList(actionList)
-	pass
+	moveBack()
 
 
 func _ready():
