@@ -16,9 +16,10 @@ var actionList   = {
 #var a = {
 #	"move_back": {
 var move_back = {
+		"action": "move_back",
 		"deadzone": 0.5,
 		"events": [
-			{"device": InputEventKey,"code": [KEY_W, KEY_UP, KEY_KP_8]},
+			{"device": InputEventKey, "code": [KEY_W, KEY_UP, KEY_KP_8]},
 #			{"device": InputEventJoypadButton, "button_index": 13},
 #			{"device": InputEventJoypadMotion,"axis": 1, "axis_value": 1.0}
 		]
