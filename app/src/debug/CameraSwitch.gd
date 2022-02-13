@@ -5,6 +5,11 @@ var index:     int = -1
 var lastIndex: int
 var length:    int
 var list:      Array
+var listEvent: Array
+
+
+func _init():
+	pass
 
 
 func _ready():
@@ -19,10 +24,16 @@ func _ready():
 			else:
 				node.current = false
 		i += 1
+	
+	if InputMap.has_action("ui_camera"):
+		listEvent = InputMap.get_action_list("ui_camera")
 
 
 func _input(event):
-	if event is InputEventKey && event.pressed:
+	if InputMap.has_action("ui_camera") && InputMap.action_has_event("ui_camera", event):
+		pass
+	
+	if (event is InputEventKey or event is InputEventMouseButton) && event.pressed:
 		if event.is_action_pressed("ui_camera"):
 			list[index].current = false
 			if index >= lastIndex:

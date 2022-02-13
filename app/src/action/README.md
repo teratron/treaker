@@ -1,5 +1,11 @@
 # Action Map List
 
+## addActionMapList()
+
+```javascript
+func addActionMapList(list) -> void:
+```
+
 ```javascript
 var actionMapList = [
 	{
@@ -7,8 +13,8 @@ var actionMapList = [
 		"deadzone": 0.5,
 		"events": {
 			InputEventKey:          [KEY_W, KEY_UP, KEY_KP_8],
-			InputEventMouse:        [BUTTON_LEFT],
-			InputEventJoypadButton: [JOY_BUTTON_0],
+			InputEventMouseButton:  [BUTTON_LEFT],
+			InputEventJoypadButton: [JOY_BUTTON_12],
 			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
 		}
 	},{
@@ -16,10 +22,52 @@ var actionMapList = [
 		"deadzone": 0.5,
 		"events": {
 			InputEventKey:          KEY_S,
-			InputEventMouse:        BUTTON_RIGHT,
-			InputEventJoypadButton: JOY_BUTTON_1,
+			InputEventMouseButton:  BUTTON_RIGHT,
+			InputEventJoypadButton: JOY_BUTTON_13
 			InputEventJoypadMotion: {"axis": 1, "axis_value": 1.0}
 		}
 	}
 ]
 ```
+
+```javascript
+var actionMapItem = {
+	"action": "move_forward",
+	"deadzone": 0.5,
+	"events": {
+		InputEventKey:          [KEY_W, KEY_UP],
+		InputEventMouseButton:  [BUTTON_LEFT, BUTTON_RIGHT],
+		InputEventJoypadButton: JOY_BUTTON_12,
+		InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
+	}
+}
+```
+
+## addActionKey()
+
+```javascript
+# Keyboard
+func addActionKey(action: String, code) -> void:
+```
+
+## addActionMouseButton()
+
+```javascript
+# Mouse button
+func addActionMouseButton(action: String, index) -> void:
+```
+
+## addActionJoypadButton()
+
+```javascript
+# Joypad button
+func addActionJoypadButton(action: String, index) -> void:
+```
+
+## addActionJoypadMotion()
+
+```javascript
+# Joypad motion
+func addActionJoypadMotion(action: String, axis: int=0, axis_value: float=0) -> void:
+```
+

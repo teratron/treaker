@@ -23,17 +23,11 @@ _global_script_classes=[ {
 "class": "Pipe",
 "language": "GDScript",
 "path": "res://src/geometry/Pipe.gd"
-}, {
-"base": "Reference",
-"class": "Torus",
-"language": "GDScript",
-"path": "res://src/geometry/Torus.gd"
 } ]
 _global_script_class_icons={
 "ActionMap": "",
 "CameraSwitch": "",
-"Pipe": "",
-"Torus": "res://assets/tools/torus.svg"
+"Pipe": ""
 }
 
 [application]

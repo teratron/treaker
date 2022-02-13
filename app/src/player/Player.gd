@@ -4,19 +4,45 @@ extends Spatial
 const MOUSE_SENSITIVITY = 0.002
 const MOVE_SPEED = 0.6
 
-var rotate     = Vector3()
-var velocity   = Vector3()
-var actionMap  = ActionMap.new()
-var actionList = {
-	"move_left":   [KEY_A, KEY_LEFT],
-	"move_right":  [KEY_D, KEY_RIGHT],
-	"use_shot":    [KEY_SPACE],
-	"use_ability": [KEY_SHIFT]
-}
+var radius: float = 10
+var angularVelocity
+var angularAcceleration
+var rotationSpeed
+
+var rotate    = Vector3()
+var velocity  = Vector3()
+var actionMap = ActionMap.new()
+var actionMapList = [
+	{
+		"action": "move_left",
+		"deadzone": 0.5,
+		"events": {
+			InputEventKey: [KEY_A, KEY_LEFT, KEY_KP_4],
+			InputEventJoypadButton: JOY_BUTTON_14,
+			InputEventJoypadMotion: {"axis": 0, "axis_value": -1.0}
+		}
+	},{
+		"action": "move_right",
+		"deadzone": 0.5,
+		"events": {
+			InputEventKey: [KEY_D, KEY_RIGHT, KEY_KP_6],
+			InputEventJoypadButton: JOY_BUTTON_15,
+			InputEventJoypadMotion: {"axis": 0, "axis_value": 1.0}
+		}
+	},{
+		"action": "use_shot",
+		"deadzone": 0.5,
+		"events": {InputEventKey: KEY_SPACE}
+	},{
+		"action": "use_ability",
+		"deadzone": 0.5,
+		"events": {InputEventKey: KEY_SHIFT}
+	}
+]
 
 
 func _init():
-	actionMap.addActionList(actionList)
+	actionMap.addActionMapList(actionMapList)
 
 
 func _ready():
