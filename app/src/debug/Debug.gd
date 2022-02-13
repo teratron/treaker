@@ -10,7 +10,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey: [KEY_W, KEY_UP, KEY_KP_8],
 			InputEventJoypadButton: [13],
-			InputEventJoypadMotion: {"axis": 1, "axis_value": 1.0}
+			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
 		}
 	},{
 		"action": "move_backword",
@@ -18,7 +18,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey: [KEY_S, KEY_DOWN, KEY_KP_2],
 			InputEventJoypadButton: [13],
-			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
+			InputEventJoypadMotion: {"axis": 1, "axis_value": 1.0}
 		}
 	},{
 		"action": "move_left",
@@ -26,7 +26,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey: [KEY_A, KEY_LEFT, KEY_KP_4],
 			InputEventJoypadButton: [13],
-			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
+			InputEventJoypadMotion: {"axis": 0, "axis_value": -1.0}
 		}
 	},{
 		"action": "move_right",
@@ -34,7 +34,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey: [KEY_D, KEY_RIGHT, KEY_KP_6],
 			InputEventJoypadButton: [13],
-			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
+			InputEventJoypadMotion: {"axis": 0, "axis_value": 1.0}
 		}
 	},{
 		"action": "move_up",
