@@ -23,7 +23,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey:          KEY_S,
 			InputEventMouseButton:  BUTTON_RIGHT,
-			InputEventJoypadButton: JOY_BUTTON_13
+			InputEventJoypadButton: JOY_BUTTON_13,
 			InputEventJoypadMotion: {"axis": 1, "axis_value": 1.0}
 		}
 	}
@@ -70,4 +70,3 @@ func addActionJoypadButton(action: String, index) -> void:
 # Joypad motion
 func addActionJoypadMotion(action: String, axis: int=0, axis_value: float=0) -> void:
 ```
-
