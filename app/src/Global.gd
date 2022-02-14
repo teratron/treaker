@@ -2,7 +2,8 @@ extends Node
 
 
 # Groups
-const GROUP_CAMERAS: String = "cameras"
+const GROUP_CAMERA: String = "camera"
+const GROUP_DEBUG:  String = "debug"
 
 
 # Path

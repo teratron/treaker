@@ -12,7 +12,7 @@ var rotationSpeed
 var rotate    = Vector3()
 var velocity  = Vector3()
 var actionMap = ActionMap.new()
-var actionMapList = [
+var actionList = [
 	{
 		"action": "move_left",
 		"deadzone": 0.5,
@@ -42,7 +42,7 @@ var actionMapList = [
 
 
 func _init():
-	actionMap.addActionMapList(actionMapList)
+	actionMap.addActionMapList(actionList)
 
 
 func _ready():

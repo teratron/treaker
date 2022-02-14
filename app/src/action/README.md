@@ -47,26 +47,26 @@ var actionMapItem = {
 
 ```javascript
 # Keyboard
-func addActionKey(action: String, code) -> void:
+func addActionKey(action: String, code: int) -> void:
 ```
 
 ## addActionMouseButton()
 
 ```javascript
 # Mouse button
-func addActionMouseButton(action: String, index) -> void:
+func addActionMouseButton(action: String, index: int) -> void:
 ```
 
 ## addActionJoypadButton()
 
 ```javascript
 # Joypad button
-func addActionJoypadButton(action: String, index) -> void:
+func addActionJoypadButton(action: String, index: int) -> void:
 ```
 
 ## addActionJoypadMotion()
 
 ```javascript
 # Joypad motion
-func addActionJoypadMotion(action: String, axis: int=0, axis_value: float=0) -> void:
+func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
 ```

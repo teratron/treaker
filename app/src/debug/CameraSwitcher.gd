@@ -1,4 +1,4 @@
-class_name CameraSwitch extends Node
+class_name CameraSwitcher extends Node
 
 
 var index:     int = -1
@@ -13,7 +13,7 @@ func _init():
 
 
 func _ready():
-	list      = get_tree().get_nodes_in_group(Global.GROUP_CAMERAS)
+	list      = get_tree().get_nodes_in_group(Global.GROUP_CAMERA)
 	length    = len(list)
 	lastIndex = length - 1
 	var i = 0
