@@ -3,13 +3,13 @@ class_name ActionMap
 
 func addActionMapList(list) -> void:
 	match typeof(list):
+		TYPE_DICTIONARY:
+			_setItemMap(list)
 		TYPE_ARRAY:
 			for item in list:
 				_setItemMap(item)
-		TYPE_DICTIONARY:
-			_setItemMap(list)
 		_:
-			printerr("error: action not exist")
+			printerr("error: map list not exist")
 	return
 
 
@@ -45,8 +45,6 @@ func _setItemMap(item: Dictionary) -> void:
 
 func _addActionEvent(function: FuncRef, action, value) -> void:
 	match typeof(value):
-		TYPE_NIL:
-			return
 		TYPE_INT, TYPE_DICTIONARY:
 			function.call_func(action, value)
 		TYPE_ARRAY:

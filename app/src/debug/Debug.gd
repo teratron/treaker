@@ -1,9 +1,9 @@
 extends Spatial
 
 
-var cameraSwitch = CameraSwitcher.new()
-var actionMap    = ActionMap.new()
-var actionList   = [
+var cameraSwitcher = CameraSwitcher.new()
+var actionMap  = ActionMap.new()
+var actionList = [
 	{
 		"action": "move_forward",
 		"deadzone": 0.5,
@@ -60,16 +60,14 @@ func _init():
 
 
 func _ready():
+	add_child(cameraSwitcher)
+	
 #	print(get_viewport())
 #	print(get_viewport().get_children())
 #	print(get_viewport().get_children()[1].get_children())
-#	print(get_viewport())
-	print(get_viewport().print_tree())
-#	print(get_viewport().get_camera())
-	for i in get_viewport().get_children():
-		prints(i as Camera)
-	
-	
+#	print(get_viewport().print_tree())
+#	for i in get_viewport().get_children():
+#		for j in i.get_children():
+#			prints(j, j as Camera)
 #	print(get_tree().root.print_tree())
 #	print(get_viewport().get_tree().root)
-	add_child(cameraSwitch)
