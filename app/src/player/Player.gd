@@ -4,13 +4,17 @@ extends Spatial
 const MOUSE_SENSITIVITY = 0.002
 const MOVE_SPEED = 0.6
 
-var radius: float = 10
-var angularVelocity
+var distance: float = 10
+var radius: float = 12
+var angle: float = 5
+
+var angularVelocity = 5
 var angularAcceleration
 var rotationSpeed
 var isCenterLook: bool = false
 
-var rotate    = Vector3()
+var center: Vector3
+var angle_pos  = Vector3()
 var velocity  = Vector3()
 var actionMap = ActionMap.new()
 var actionList = [
@@ -43,6 +47,7 @@ var actionList = [
 
 
 func _init():
+	center = Vector3(0, radius, -distance)
 	actionMap.addActionMapList(actionList)
 
 
@@ -51,8 +56,20 @@ func _ready():
 
 
 func _process(delta):
+#	var strengthLeft  = Input.get_action_strength("move_left")
+#	var strengthRight = Input.get_action_strength("move_right")
 	var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 	
-	velocity += MOVE_SPEED * delta * transform.basis.xform(motion.normalized())
-	velocity *= 0.85
-	translation += velocity
+	print(angle_pos)
+	
+	angle_pos += angle * delta * motion.normalized()
+
+	#velocity += MOVE_SPEED * delta * motion
+	#velocity += velocity.rotated(Vector3(0,0,1), deg2rad(angle * delta)) * motion.normalized()
+	
+	
+	#velocity *= 0.85
+	#translation += velocity
+	
+	if isCenterLook:
+		$Camera.look_at(center, Vector3(0, 1, 0))

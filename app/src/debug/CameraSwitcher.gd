@@ -19,7 +19,7 @@ func _ready():
 	var i = 0
 	for node in list:
 		if node is Camera && node.current:
-			if index == -1:
+			if index == -1: #get_parent() != $Debug && 
 				index = i
 			else:
 				node.current = false
