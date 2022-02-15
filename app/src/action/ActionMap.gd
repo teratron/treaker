@@ -4,16 +4,16 @@ class_name ActionMap
 func addActionMapList(list) -> void:
 	match typeof(list):
 		TYPE_DICTIONARY:
-			_setItemMap(list)
+			_setActionMapItem(list)
 		TYPE_ARRAY:
 			for item in list:
-				_setItemMap(item)
+				_setActionMapItem(item)
 		_:
 			printerr("error: map list not exist")
 	return
 
 
-func _setItemMap(item: Dictionary) -> void:
+func _setActionMapItem(item: Dictionary) -> void:
 	if "action" in item:
 		if !InputMap.has_action(item["action"]):
 			InputMap.add_action(item["action"])
@@ -26,13 +26,13 @@ func _setItemMap(item: Dictionary) -> void:
 			for key in item["events"]:
 				match key:
 					InputEventKey:
-						name = "_addKey"
+						name = "_setActionKey"
 					InputEventMouseButton:
-						name = "_addMouseButton"
+						name = "_setActionMouseButton"
 					InputEventJoypadButton:
-						name = "_addJoypadButton"
+						name = "_setActionJoypadButton"
 					InputEventJoypadMotion:
-						name = "_addJoypadMotion"
+						name = "_setJoypadMotion"
 					_:
 						printerr("error: unexpected results: ", key.to_string())
 						continue
@@ -64,11 +64,11 @@ func _addAction(funcName: String, action: String, value) -> void:
 
 # Keyboard
 func addActionKey(action: String, code: int) -> void:
-	_addAction("_addKey", action, code)
+	_addAction("_setActionKey", action, code)
 	return
 
 
-func _addKey(action, code) -> void:
+func _setActionKey(action, code) -> void:
 	var event = InputEventKey.new()
 	event.scancode = code
 	InputMap.action_add_event(action, event)
@@ -77,11 +77,11 @@ func _addKey(action, code) -> void:
 
 # Mouse button
 func addActionMouseButton(action: String, index: int) -> void:
-	_addAction("_addMouseButton", action, index)
+	_addAction("_setActionMouseButton", action, index)
 	return
 
 
-func _addMouseButton(action, index) -> void:
+func _setActionMouseButton(action, index) -> void:
 	var event = InputEventMouseButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
@@ -90,11 +90,11 @@ func _addMouseButton(action, index) -> void:
 
 # Joypad button
 func addActionJoypadButton(action: String, index: int) -> void:
-	_addAction("_addJoypadButton", action, index)
+	_addAction("_setActionJoypadButton", action, index)
 	return
 
 
-func _addJoypadButton(action, index) -> void:
+func _setActionJoypadButton(action, index) -> void:
 	var event = InputEventJoypadButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
@@ -103,11 +103,11 @@ func _addJoypadButton(action, index) -> void:
 
 # Joypad motion
 func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
-	_addAction("_addJoypadMotion", action, {"axis": axis, "axis_value": axis_value})
+	_addAction("_setJoypadMotion", action, {"axis": axis, "axis_value": axis_value})
 	return
 
 
-func _addJoypadMotion(action, param) -> void:
+func _setJoypadMotion(action, param) -> void:
 	var event = InputEventJoypadMotion.new()
 	event.axis = param.axis
 	event.axis_value = param.axis_value

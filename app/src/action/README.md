@@ -2,11 +2,11 @@
 
 ## addActionMapList()
 
-```javascript
+```gdscript
 func addActionMapList(list) -> void:
 ```
 
-```javascript
+```gdscript
 var actionMapList = [
 	{
 		"action": "move_forward",
@@ -30,7 +30,7 @@ var actionMapList = [
 ]
 ```
 
-```javascript
+```gdscript
 var actionMapItem = {
 	"action": "move_forward",
 	"deadzone": 0.5,
@@ -45,28 +45,28 @@ var actionMapItem = {
 
 ## addActionKey()
 
-```javascript
+```gdscript
 # Keyboard
 func addActionKey(action: String, code: int) -> void:
 ```
 
 ## addActionMouseButton()
 
-```javascript
+```gdscript
 # Mouse button
 func addActionMouseButton(action: String, index: int) -> void:
 ```
 
 ## addActionJoypadButton()
 
-```javascript
+```gdscript
 # Joypad button
 func addActionJoypadButton(action: String, index: int) -> void:
 ```
 
 ## addActionJoypadMotion()
 
-```javascript
+```gdscript
 # Joypad motion
 func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
 ```

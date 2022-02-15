@@ -60,7 +60,7 @@ func _process(delta):
 #	var strengthRight = Input.get_action_strength("move_right")
 	var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 	
-	print(angle_pos)
+	#print(angle_pos)
 	
 	angle_pos += angle * delta * motion.normalized()
 
