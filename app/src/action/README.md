@@ -1,10 +1,12 @@
 # Action Map List
 
-## addActionMapList()
+### addActionMapList()
 
 ```gdscript
 func addActionMapList(list) -> void:
 ```
+
+Example:
 
 ```gdscript
 var actionMapList = [
@@ -14,7 +16,7 @@ var actionMapList = [
 		"events": {
 			InputEventKey:          [KEY_W, KEY_UP, KEY_KP_8],
 			InputEventMouseButton:  [BUTTON_LEFT],
-			InputEventJoypadButton: [JOY_BUTTON_12],
+			InputEventJoypadButton: [JOY_BUTTON_12, JOY_BUTTON_14],
 			InputEventJoypadMotion: {"axis": 1, "axis_value": -1.0}
 		}
 	},{
@@ -30,6 +32,8 @@ var actionMapList = [
 ]
 ```
 
+or:
+
 ```gdscript
 var actionMapItem = {
 	"action": "move_forward",
@@ -43,30 +47,60 @@ var actionMapItem = {
 }
 ```
 
-## addActionKey()
+### addActionKey()
 
 ```gdscript
 # Keyboard
-func addActionKey(action: String, code: int) -> void:
+func addActionKey(action: String, code) -> void:
 ```
 
-## addActionMouseButton()
+Example:
+
+```gdscript
+addActionKey("move_forward", [KEY_W, KEY_UP, KEY_KP_8])
+# or
+addActionKey("move_forward", KEY_W)
+```
+
+### addActionMouseButton()
 
 ```gdscript
 # Mouse button
 func addActionMouseButton(action: String, index: int) -> void:
 ```
 
-## addActionJoypadButton()
+Example:
+
+```gdscript
+addActionMouseButton("move_forward", [BUTTON_LEFT, BUTTON_RIGHT])
+# or
+addActionMouseButton("move_forward", BUTTON_LEFT)
+```
+
+### addActionJoypadButton()
 
 ```gdscript
 # Joypad button
 func addActionJoypadButton(action: String, index: int) -> void:
 ```
 
-## addActionJoypadMotion()
+Example:
+
+```gdscript
+addActionJoypadButton("move_forward", [JOY_BUTTON_12, JOY_BUTTON_14])
+# or
+addActionJoypadButton("move_forward", JOY_BUTTON_12)
+```
+
+### addActionJoypadMotion()
 
 ```gdscript
 # Joypad motion
 func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
+```
+
+Example:
+
+```gdscript
+addActionJoypadMotion("move_forward", 1, -1.0)
 ```

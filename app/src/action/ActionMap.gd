@@ -63,7 +63,7 @@ func _addAction(funcName: String, action: String, value) -> void:
 
 
 # Keyboard
-func addActionKey(action: String, code: int) -> void:
+func addActionKey(action: String, code) -> void:
 	_addAction("_setActionKey", action, code)
 	return
 
@@ -76,7 +76,7 @@ func _setActionKey(action, code) -> void:
 
 
 # Mouse button
-func addActionMouseButton(action: String, index: int) -> void:
+func addActionMouseButton(action: String, index) -> void:
 	_addAction("_setActionMouseButton", action, index)
 	return
 
@@ -89,7 +89,7 @@ func _setActionMouseButton(action, index) -> void:
 
 
 # Joypad button
-func addActionJoypadButton(action: String, index: int) -> void:
+func addActionJoypadButton(action: String, index) -> void:
 	_addAction("_setActionJoypadButton", action, index)
 	return
 
