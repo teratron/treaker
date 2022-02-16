@@ -17,25 +17,25 @@ func _unhandled_input(_event):
 	printUnhandled()
 	pass
 
-func _unhandled_key_input(event):
+func _unhandled_key_input(_event):
 	printKeyUnhandled()
 	pass
 
 func printInput():
 	print(className, " calls input event")
-	#stopInputPropogation()
+	stopInputPropogation()
 
 func printUnhandled():
 	print(className, " calls Unhandled Input event")
-	#stopInputPropogation()
+	stopInputPropogation()
 
 func printKeyUnhandled():
 	print(className, " calls Unhandled Key Input event")
-	#stopInputPropogation()
+	stopInputPropogation()
 
 func printGui():
 	print(className, " calls GUI Input event")
-	#stopInputPropogation()
+	stopInputPropogation()
 
 func stopInputPropogation():
 	get_tree().get_root().set_input_as_handled()

@@ -15,13 +15,11 @@ func _physics_process(_delta):
 	#physicsTimeCalculation(_delta)
 	pass
 
-
 func processTimeCalculation(_delta:float):
 	if processCounter < 1000:
 		processTime += _delta
 		print("Process Step ", processCounter, ": ", processTime, " (Total Time)")
 		processCounter+=1
-	
 
 func physicsTimeCalculation(_delta:float):
 	if physicsCounter < 1000:

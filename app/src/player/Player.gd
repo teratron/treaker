@@ -63,7 +63,7 @@ func _process(delta):
 	#print(angle_pos)
 	
 	angle_pos += angle * delta * motion.normalized()
-
+	
 	#velocity += MOVE_SPEED * delta * motion
 	#velocity += velocity.rotated(Vector3(0,0,1), deg2rad(angle * delta)) * motion.normalized()
 	

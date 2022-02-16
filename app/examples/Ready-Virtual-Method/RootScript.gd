@@ -1,11 +1,9 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(self.name, " _ready() method is called")
-	# call_deferred("deleteChildren")
-
+	#call_deferred("deleteChildren")
 
 func deleteChildren():
 	var Child1 = get_node("Child1")

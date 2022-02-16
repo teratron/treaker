@@ -1,6 +1,5 @@
 extends Node
 
-
 # Declare member variables here. Examples:
 var counter1: int = 0
 var counter2: int = 0
@@ -15,7 +14,7 @@ func _enter_tree():
 	print("_enter_tree() is called")
 
 # 5. The last thing to be called besides exit tree
-func _process(delta):
+func _process(_delta):
 	if counter1 < 1:
 		print("_process() is called")
 		counter1 += 1
@@ -23,7 +22,7 @@ func _process(delta):
 		call_deferred("removeScene")
 
 # 4. Called before the _process virtual method
-func _physics_process(delta):
+func _physics_process(_delta):
 	if counter2 < 1:
 		print("_physics_process() is called")
 		counter2 += 1
@@ -35,7 +34,7 @@ func _exit_tree():
 
 # 3. If input is recieved it will call this method
 # Tip: when you press the play button, move your mouse really fast until print to console finishes
-func _input(event):
+func _input(_event):
 	if counter3 < 1:
 		print("_input() is called")
 		counter3 += 1
