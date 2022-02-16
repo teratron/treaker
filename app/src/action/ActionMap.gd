@@ -43,7 +43,7 @@ func _setActionMapItem(item: Dictionary) -> void:
 	return
 
 
-func _addActionEvent(function: FuncRef, action, value) -> void:
+func _addActionEvent(function: FuncRef, action: String, value) -> void:
 	match typeof(value):
 		TYPE_INT, TYPE_DICTIONARY:
 			function.call_func(action, value)
@@ -68,7 +68,8 @@ func addActionKey(action: String, code) -> void:
 	return
 
 
-func _setActionKey(action, code) -> void:
+func _setActionKey(action: String, code) -> void:
+	#InputMap.action_has_event(action, )
 	var event = InputEventKey.new()
 	event.scancode = code
 	InputMap.action_add_event(action, event)
@@ -81,7 +82,7 @@ func addActionMouseButton(action: String, index) -> void:
 	return
 
 
-func _setActionMouseButton(action, index) -> void:
+func _setActionMouseButton(action: String, index) -> void:
 	var event = InputEventMouseButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
@@ -94,7 +95,7 @@ func addActionJoypadButton(action: String, index) -> void:
 	return
 
 
-func _setActionJoypadButton(action, index) -> void:
+func _setActionJoypadButton(action: String, index) -> void:
 	var event = InputEventJoypadButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
@@ -107,7 +108,7 @@ func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void
 	return
 
 
-func _setJoypadMotion(action, param) -> void:
+func _setJoypadMotion(action: String, param) -> void:
 	var event = InputEventJoypadMotion.new()
 	event.axis = param.axis
 	event.axis_value = param.axis_value
