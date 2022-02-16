@@ -10,8 +10,8 @@ extends Spatial
 #	print(get_viewport().print_tree())
 
 
-##func _process(delta):
-##	pass
+#func _process(delta):
+#	pass
 
 
 #func _input(event):

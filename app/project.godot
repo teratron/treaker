@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://examples/Ready-Virtual-Method/ChildrenScript.gd"
 }, {
+"base": "Node",
+"class": "Human",
+"language": "GDScript",
+"path": "res://examples/SetGet-Keyword/Human.gd"
+}, {
+"base": "Reference",
+"class": "OtherScript",
+"language": "GDScript",
+"path": "res://examples/Classes/OtherScript.gd"
+}, {
 "base": "Reference",
 "class": "Pipe",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "ActionMap": "",
 "CameraSwitcher": "",
 "Child": "",
+"Human": "",
+"OtherScript": "",
 "Pipe": ""
 }
 
