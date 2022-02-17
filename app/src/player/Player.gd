@@ -52,17 +52,29 @@ func _init():
 
 
 func _ready():
+	print(transform)
+	print(transform.basis)
 	pass
 
+func _physics_process(_delta):
+	transform = transform.orthonormalized()
 
 func _process(delta):
 #	var strengthLeft  = Input.get_action_strength("move_left")
 #	var strengthRight = Input.get_action_strength("move_right")
-	var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
+	#var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
+	
+	transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
+	#transform.basis = transform.basis.rotated(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
+	
+	#rotate(Vector3(1, 0, 0), PI*delta)
+	#rotate_x(PI)
+	
+	#rotate_object_local(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
+	
 	
 	#print(angle_pos)
-	
-	angle_pos += angle * delta * motion.normalized()
+	#angle_pos += angle * delta * motion.normalized()
 	
 	#velocity += MOVE_SPEED * delta * motion
 	#velocity += velocity.rotated(Vector3(0,0,1), deg2rad(angle * delta)) * motion.normalized()

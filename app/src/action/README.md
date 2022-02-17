@@ -1,7 +1,5 @@
 # Action Map List
 
-### addActionMapList()
-
 ```gdscript
 func addActionMapList(list) -> void:
 ```
@@ -47,10 +45,9 @@ var actionMapItem = {
 }
 ```
 
-### addActionKey()
+### Keyboard
 
 ```gdscript
-# Keyboard
 func addActionKey(action: String, code) -> void:
 ```
 
@@ -62,11 +59,10 @@ addActionKey("move_forward", [KEY_W, KEY_UP, KEY_KP_8])
 addActionKey("move_forward", KEY_W)
 ```
 
-### addActionMouseButton()
+### Mouse button
 
 ```gdscript
-# Mouse button
-func addActionMouseButton(action: String, index: int) -> void:
+func addActionMouseButton(action: String, index) -> void:
 ```
 
 Example:
@@ -77,11 +73,10 @@ addActionMouseButton("move_forward", [BUTTON_LEFT, BUTTON_RIGHT])
 addActionMouseButton("move_forward", BUTTON_LEFT)
 ```
 
-### addActionJoypadButton()
+### Joypad button
 
 ```gdscript
-# Joypad button
-func addActionJoypadButton(action: String, index: int) -> void:
+func addActionJoypadButton(action: String, index) -> void:
 ```
 
 Example:
@@ -92,10 +87,9 @@ addActionJoypadButton("move_forward", [JOY_BUTTON_12, JOY_BUTTON_14])
 addActionJoypadButton("move_forward", JOY_BUTTON_12)
 ```
 
-### addActionJoypadMotion()
+### Joypad motion
 
 ```gdscript
-# Joypad motion
 func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
 ```
 
