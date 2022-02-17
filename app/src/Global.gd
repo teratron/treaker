@@ -11,7 +11,7 @@ const GROUP_DEBUG:  String = "debug"
 #var ActionMap    = load("res://src/action/ActionMap.gd")
 
 
-func _ready():
+func _init():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
