@@ -76,5 +76,3 @@ func _ready():
 	simpleArray.resize(0) # you will shorten and delete elements from array
 	simpleArray.resize(10) # you will lengthen/grow the element by 10 and add the value null
 	print('resized simpleArray: ', simpleArray)
-	
-	pass

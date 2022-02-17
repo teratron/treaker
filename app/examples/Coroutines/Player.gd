@@ -2,6 +2,7 @@ extends Node
 
 signal health
 var timer = Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(timer)

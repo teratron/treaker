@@ -6,13 +6,13 @@ var uniqueName = "John" setget setFunction, getFunction
 
 func _ready():
 	uniqueName = "Jane" # does not call method
-	print(uniqueName) # does not call method, Jane is assigned
+	print(uniqueName)   # does not call method, Jane is assigned
 	
-	self.uniqueName = "Aurora" # activates setter
-	self.uniqueName # activates getter
+	self.uniqueName = "Aurora"  # activates setter
+	var _name = self.uniqueName # activates getter
 
-func setFunction(param1):
-	uniqueName = param1
+func setFunction(param):
+	uniqueName = param
 	print('activated setter ', uniqueName)
 
 func getFunction():

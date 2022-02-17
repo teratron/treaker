@@ -69,7 +69,6 @@ func addActionKey(action: String, code) -> void:
 
 
 func _setActionKey(action: String, code) -> void:
-	#InputMap.action_has_event(action, )
 	var event = InputEventKey.new()
 	event.scancode = code
 	InputMap.action_add_event(action, event)

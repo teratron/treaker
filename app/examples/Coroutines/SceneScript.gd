@@ -2,6 +2,7 @@ extends Node
 
 enum STATE {IDLE, DAMAGE}
 var currentState
+
 func _ready():
 	currentState = STATE.IDLE
 
@@ -12,7 +13,6 @@ func _process(delta):
 		print("Function In Memory: ", z) # A function State
 		var a = z.resume(100)
 		a.resume("hi passed from _ready function")
-
 
 func coroutine():
 	# ENTER DAMAGE STATE, can't run coroutine() inside of _process(delta)
