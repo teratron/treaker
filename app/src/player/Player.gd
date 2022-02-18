@@ -47,8 +47,9 @@ var actionList = [
 
 
 func _init():
-	center = Vector3(0, radius, -distance)
 	Global.ActionMap.addActionMapList(actionList)
+	center = Vector3(0, radius, -distance)
+	
 
 
 func _ready():
