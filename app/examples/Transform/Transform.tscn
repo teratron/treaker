@@ -8,7 +8,7 @@
 
 [node name="MeshInstance" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="sphere" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 material/0 = null
 

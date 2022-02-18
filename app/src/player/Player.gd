@@ -53,20 +53,27 @@ func _init():
 
 
 func _ready():
-	print(get_viewport().get_children())
+	var t = $Rotor.transform
+	prints(t.basis, t.origin)
+	#print(get_viewport().get_children())
 	pass
 
 
 func _physics_process(_delta):
-	transform = transform.orthonormalized()
+	#transform = transform.orthonormalized()
+	pass
 
+
+var rotor = Transform().
 
 func _process(delta):
 #	var strengthLeft  = Input.get_action_strength("move_left")
 #	var strengthRight = Input.get_action_strength("move_right")
 	#var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 	
-	transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
+
+	
+	#transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
 	#transform.basis = transform.basis.rotated(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
 	
 	#rotate(Vector3(1, 0, 0), PI*delta)
@@ -86,4 +93,4 @@ func _process(delta):
 	#translation += velocity
 	
 	if isCenterLook:
-		$"Spatial/Camera".look_at(center, Vector3(0, 1, 0))
+		$"Rotor/Camera".look_at(center, Vector3(0, 1, 0))
