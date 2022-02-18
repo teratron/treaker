@@ -47,7 +47,7 @@ var actionList = [
 
 
 func _init():
-	Global.ActionMap.addActionMapList(actionList)
+	Global.actionMap.addActionMapList(actionList)
 	center = Vector3(0, radius, -distance)
 	
 
@@ -65,7 +65,7 @@ func _process(delta):
 #	var strengthLeft  = Input.get_action_strength("move_left")
 #	var strengthRight = Input.get_action_strength("move_right")
 	#var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
-	
+	#if motion != Vector3.ZERO:
 	transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
 	#transform.basis = transform.basis.rotated(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
 	

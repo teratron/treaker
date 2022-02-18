@@ -24,6 +24,7 @@ func _process(delta):
 		Input.get_action_strength("move_backword") - Input.get_action_strength("move_forward")
 	)
 	
-	velocity += MOVE_SPEED * delta * transform.basis.xform(motion.normalized())
-	velocity *= 0.85
-	translation += velocity
+	if motion != Vector3.ZERO:
+		velocity += MOVE_SPEED * delta * transform.basis.xform(motion.normalized())
+		velocity *= 0.85
+		translation += velocity

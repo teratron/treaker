@@ -9,11 +9,11 @@ const GROUP_DEBUG:  String = "debug"
 # Path
 #var CameraSwitch = load("res://src/debug/CameraSwitch.gd")
 
-var ActionMap = ActionMapClass.new()
+var actionMap = ActionMap.new()
 
 
 func _init():
-	ActionMap.addActionKey("toggle_mouse_capture", [KEY_ESCAPE, KEY_F10])
+	actionMap.addActionKey("toggle_mouse_capture", [KEY_ESCAPE, KEY_F10])
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

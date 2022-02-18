@@ -1,4 +1,4 @@
-class_name ActionMapClass
+class_name ActionMap
 
 
 func addActionMapList(list) -> void:
