@@ -1,20 +1,6 @@
 extends Spatial
 
 
-const MOUSE_SENSITIVITY = 0.002
-const MOVE_SPEED = 0.6
-
-var distance: float = 10
-var radius: float = 12
-var angle: float = 5
-
-var angularVelocity = 5
-var angularAcceleration
-var rotationSpeed
-var isCenterLook: bool = false
-
-var center: Vector3
-var angle_pos  = Vector3()
 var velocity  = Vector3()
 #var actionMap = ActionMap.new()
 var actionList = [
@@ -45,17 +31,24 @@ var actionList = [
 	}
 ]
 
+var angularVelocity: float = 0.5
+var radiusPaddle:    float = 12
+var radiusCamera:    float = 8
+var distanceCamera:  float = 16
+var isCenterLook:    bool  = false
+
+onready var rotor  = $Rotor
+onready var paddle = $"Rotor/Paddle"
+onready var camera = $"Rotor/Camera"
+
 
 func _init():
 	Global.actionMap.addActionMapList(actionList)
-	center = Vector3(0, radius, -distance)
-	
 
 
 func _ready():
-	var t = $Rotor.transform
-	prints(t.basis, t.origin)
-	#print(get_viewport().get_children())
+	paddle.transform.origin = Vector3(0, -radiusPaddle, 0)
+	camera.transform.origin = Vector3(0, -radiusCamera, distanceCamera)
 	pass
 
 
@@ -64,37 +57,22 @@ func _physics_process(_delta):
 	pass
 
 
-var rotor = Transform().
-
 func _process(delta):
-#	var strengthLeft  = Input.get_action_strength("move_left")
-#	var strengthRight = Input.get_action_strength("move_right")
-	#var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
-	
-
+	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left"):
+		var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
+		
+		if motion != Vector3.ZERO:
+			#prints(motion, motion.normalized())
+		
+			#rotor.transform.basis *= Basis(Vector3(0, 0, 1), angularVelocity * delta)
+			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angularVelocity * delta * motion.x)
+			#rotor.global_rotate(Vector3(0, 0, 1), delta * motion.x)
 	
 	#transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
-
-	#if motion != Vector3.ZERO:
-	transform.basis = Basis(Vector3(0, 0, 1), MOVE_SPEED * PI*delta) * transform.basis
-
 	#transform.basis = transform.basis.rotated(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
-	
 	#rotate(Vector3(1, 0, 0), PI*delta)
 	#rotate_x(PI)
-	
 	#rotate_object_local(Vector3(0, 0, 1), MOVE_SPEED * PI*delta)
 	
-	
-	#print(angle_pos)
-	#angle_pos += angle * delta * motion.normalized()
-	
-	#velocity += MOVE_SPEED * delta * motion
-	#velocity += velocity.rotated(Vector3(0,0,1), deg2rad(angle * delta)) * motion.normalized()
-	
-	
-	#velocity *= 0.85
-	#translation += velocity
-	
 	if isCenterLook:
-		$"Rotor/Camera".look_at(center, Vector3(0, 1, 0))
+		camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))

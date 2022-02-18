@@ -2,7 +2,7 @@ extends Camera
 
 
 const MOUSE_SENSITIVITY = 0.002
-const MOVE_SPEED = 0.6
+const MOVE_SPEED = 0.8
 
 var rotate   = Vector3()
 var velocity = Vector3()
@@ -23,7 +23,7 @@ func _process(delta):
 		Input.get_action_strength("move_up")       - Input.get_action_strength("move_down"),
 		Input.get_action_strength("move_backword") - Input.get_action_strength("move_forward")
 	)
-	
+	#prints(motion, motion.normalized())
 	if motion != Vector3.ZERO:
 		velocity += MOVE_SPEED * delta * transform.basis.xform(motion.normalized())
 		velocity *= 0.85

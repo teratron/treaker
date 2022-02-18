@@ -6,7 +6,7 @@ extents = Vector3( 2, 0.25, 0.5 )
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 4, 0.5, 1 )
 
-[node name="Paddle" type="RigidBody"]
+[node name="Paddle" type="StaticBody"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
