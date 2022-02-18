@@ -10,8 +10,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Paddle" parent="." instance=ExtResource( 2 )]
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Paddle" parent="Spatial" instance=ExtResource( 2 )]
+
+[node name="Camera" type="Camera" parent="Spatial" groups=["camera"]]
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
-
-[node name="Camera" type="Camera" parent="." groups=["camera"]]

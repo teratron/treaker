@@ -2,7 +2,7 @@ extends Spatial
 
 
 var cameraSwitcher = CameraSwitcher.new()
-var actionMap  = ActionMap.new()
+#var actionMap  = ActionMap.new()
 var actionList = [
 	{
 		"action": "move_forward",
@@ -56,7 +56,7 @@ var actionList = [
 
 
 func _init():
-	actionMap.addActionMapList(actionList)
+	Global.ActionMap.addActionMapList(actionList)
 
 
 func _ready():

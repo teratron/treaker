@@ -16,7 +16,7 @@ var isCenterLook: bool = false
 var center: Vector3
 var angle_pos  = Vector3()
 var velocity  = Vector3()
-var actionMap = ActionMap.new()
+#var actionMap = ActionMap.new()
 var actionList = [
 	{
 		"action": "move_left",
@@ -48,16 +48,17 @@ var actionList = [
 
 func _init():
 	center = Vector3(0, radius, -distance)
-	actionMap.addActionMapList(actionList)
+	Global.ActionMap.addActionMapList(actionList)
 
 
 func _ready():
-	print(transform)
-	print(transform.basis)
+	print(get_viewport().get_children())
 	pass
+
 
 func _physics_process(_delta):
 	transform = transform.orthonormalized()
+
 
 func _process(delta):
 #	var strengthLeft  = Input.get_action_strength("move_left")
@@ -84,4 +85,4 @@ func _process(delta):
 	#translation += velocity
 	
 	if isCenterLook:
-		$Camera.look_at(center, Vector3(0, 1, 0))
+		$"Spatial/Camera".look_at(center, Vector3(0, 1, 0))

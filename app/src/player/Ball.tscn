@@ -5,9 +5,6 @@
 [sub_resource type="SphereMesh" id=2]
 
 [node name="Ball" type="RigidBody"]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

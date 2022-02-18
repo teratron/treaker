@@ -7,9 +7,6 @@ extents = Vector3( 2, 0.25, 0.5 )
 size = Vector3( 4, 0.5, 1 )
 
 [node name="Paddle" type="RigidBody"]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
