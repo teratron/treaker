@@ -10,7 +10,7 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
-"class": "ActionMapClass",
+"class": "ActionMap",
 "language": "GDScript",
 "path": "res://src/action/ActionMap.gd"
 }, {
@@ -40,7 +40,7 @@ _global_script_classes=[ {
 "path": "res://src/geometry/Pipe.gd"
 } ]
 _global_script_class_icons={
-"ActionMapClass": "",
+"ActionMap": "",
 "CameraSwitcher": "",
 "Child": "",
 "Human": "",

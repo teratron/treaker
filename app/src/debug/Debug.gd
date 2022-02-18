@@ -56,7 +56,7 @@ var actionList = [
 
 
 func _init():
-	Global.ActionMap.addActionMapList(actionList)
+	Global.actionMap.addActionMapList(actionList)
 
 
 func _ready():
