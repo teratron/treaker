@@ -9,7 +9,7 @@ var velocity = Vector3()
 
 
 func _input(event):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# Horizontal mouse look.
 		rotate.y -= event.relative.x * MOUSE_SENSITIVITY
 		# Vertical mouse look.
@@ -23,7 +23,6 @@ func _process(delta):
 		Input.get_action_strength("move_up")       - Input.get_action_strength("move_down"),
 		Input.get_action_strength("move_backword") - Input.get_action_strength("move_forward")
 	)
-	#prints(motion, motion.normalized())
 	if motion != Vector3.ZERO:
 		velocity += MOVE_SPEED * delta * transform.basis.xform(motion.normalized())
 		velocity *= 0.85

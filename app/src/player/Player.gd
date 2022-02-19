@@ -3,33 +3,7 @@ extends Spatial
 
 var velocity  = Vector3()
 #var actionMap = ActionMap.new()
-var actionList = [
-	{
-		"action": "move_left",
-		"deadzone": 0.5,
-		"events": {
-			InputEventKey: [KEY_A, KEY_LEFT, KEY_KP_4],
-			InputEventJoypadButton: JOY_BUTTON_14,
-			InputEventJoypadMotion: {"axis": 0, "axis_value": -1.0}
-		}
-	},{
-		"action": "move_right",
-		"deadzone": 0.5,
-		"events": {
-			InputEventKey: [KEY_D, KEY_RIGHT, KEY_KP_6],
-			InputEventJoypadButton: JOY_BUTTON_15,
-			InputEventJoypadMotion: {"axis": 0, "axis_value": 1.0}
-		}
-	},{
-		"action": "use_shot",
-		"deadzone": 0.5,
-		"events": {InputEventKey: KEY_SPACE}
-	},{
-		"action": "use_ability",
-		"deadzone": 0.5,
-		"events": {InputEventKey: KEY_SHIFT}
-	}
-]
+
 
 var angularVelocity: float = 0.5
 var radiusPaddle:    float = 12
@@ -42,8 +16,8 @@ onready var paddle = $"Rotor/Paddle"
 onready var camera = $"Rotor/Camera"
 
 
-func _init():
-	Global.actionMap.addActionMapList(actionList)
+#func _init():
+#	Global.actionMap.addActionMapList(actionList)
 
 
 func _ready():
