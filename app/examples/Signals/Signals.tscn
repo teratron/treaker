@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://examples/Coroutines/SceneScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://examples/Signals/SceneScript.gd" type="Script" id=1]
+[ext_resource path="res://examples/Signals/icon.png" type="Texture" id=2]
 [ext_resource path="res://examples/Signals/PlayerScript.gd" type="Script" id=3]
 [ext_resource path="res://examples/Signals/Node2D.gd" type="Script" id=4]
 
