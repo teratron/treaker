@@ -12,6 +12,10 @@ radius = 0.4
 height = 0.8
 
 [node name="Ball" type="RigidBody"]
+mode = 2
+contacts_reported = 1
+contact_monitor = true
+can_sleep = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
