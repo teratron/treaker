@@ -5,7 +5,6 @@ var cameraSwitcher = CameraSwitcher.new()
 #var actionMap  = ActionMap.new()
 
 
-
 #func _init():
 #	Global.actionMap.addActionMapList(actionList)
 

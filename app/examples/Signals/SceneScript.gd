@@ -1,5 +1,3 @@
-# Name in Scene: Health
-# node Type: Node2D
 extends Node2D
 
 
@@ -8,7 +6,7 @@ onready var PlayerNode = get_node('Player')
 
 
 func _ready():
-	print(PlayerNode)
+	prints("Health", PlayerNode)
 	PlayerNode.connect("healthChanged", self, "doSomething")
 
 

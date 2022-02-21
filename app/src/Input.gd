@@ -2,7 +2,7 @@ extends ActionMap
 
 
 func _init():
-	addActionMapList(
+	add_action_map_list(
 		[
 			{
 				"action": "move_forward",

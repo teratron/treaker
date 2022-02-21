@@ -1,13 +1,12 @@
 extends Node2D
 
 
-onready var PlayerNode = get_owner()
+onready var HealthNode = get_owner()
 
 
 func _ready():
-	print(PlayerNode)
-	PlayerNode.connect("gameOver", self, "doSomething")
-	pass
+	prints("GameOver", HealthNode)
+	HealthNode.connect("gameOver", self, "doSomething")
 
 
 func doSomething():

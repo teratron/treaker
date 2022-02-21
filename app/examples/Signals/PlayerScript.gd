@@ -1,5 +1,3 @@
-# Name in Scene: Player
-# node Type: Sprite
 extends Sprite
 
 
