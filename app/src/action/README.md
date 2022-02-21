@@ -1,13 +1,13 @@
 # Action Map List
 
 ```gdscript
-func addActionMapList(list) -> void:
+func add_action_map_list(list) -> void:
 ```
 
 Example:
 
 ```gdscript
-var actionMapList = [
+var action_map_list = [
 	{
 		"action": "move_forward",
 		"deadzone": 0.5,
@@ -33,7 +33,7 @@ var actionMapList = [
 or:
 
 ```gdscript
-var actionMapItem = {
+var action_map_item = {
 	"action": "move_forward",
 	"deadzone": 0.5,
 	"events": {
@@ -48,53 +48,53 @@ var actionMapItem = {
 ### Keyboard
 
 ```gdscript
-func addActionKey(action: String, code) -> void:
+func add_action_key(action: String, code) -> void:
 ```
 
 Example:
 
 ```gdscript
-addActionKey("move_forward", [KEY_W, KEY_UP, KEY_KP_8])
+add_action_key("move_forward", [KEY_W, KEY_UP, KEY_KP_8])
 # or
-addActionKey("move_forward", KEY_W)
+add_action_key("move_forward", KEY_W)
 ```
 
 ### Mouse button
 
 ```gdscript
-func addActionMouseButton(action: String, index) -> void:
+func add_action_mouse_button(action: String, index) -> void:
 ```
 
 Example:
 
 ```gdscript
-addActionMouseButton("move_forward", [BUTTON_LEFT, BUTTON_RIGHT])
+add_action_mouse_button("move_forward", [BUTTON_LEFT, BUTTON_RIGHT])
 # or
-addActionMouseButton("move_forward", BUTTON_LEFT)
+add_action_mouse_button("move_forward", BUTTON_LEFT)
 ```
 
 ### Joypad button
 
 ```gdscript
-func addActionJoypadButton(action: String, index) -> void:
+func add_action_joypad_button(action: String, index) -> void:
 ```
 
 Example:
 
 ```gdscript
-addActionJoypadButton("move_forward", [JOY_BUTTON_12, JOY_BUTTON_14])
+add_action_joypad_button("move_forward", [JOY_BUTTON_12, JOY_BUTTON_14])
 # or
-addActionJoypadButton("move_forward", JOY_BUTTON_12)
+add_action_joypad_button("move_forward", JOY_BUTTON_12)
 ```
 
 ### Joypad motion
 
 ```gdscript
-func addActionJoypadMotion(action: String, axis: int, axis_value: float) -> void:
+func add_action_joypad_motion(action: String, axis: int, axis_value: float) -> void:
 ```
 
 Example:
 
 ```gdscript
-addActionJoypadMotion("move_forward", 1, -1.0)
+add_action_joypad_motion("move_forward", 1, -1.0)
 ```

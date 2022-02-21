@@ -28,7 +28,7 @@ __meta__ = {
 [node name="Camera" type="Camera" parent="Rotor" groups=["camera"]]
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25572, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
 [node name="Center" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
