@@ -15,48 +15,36 @@ _global_script_classes=[ {
 "path": "res://src/action/ActionMap.gd"
 }, {
 "base": "Node",
+"class": "App",
+"language": "GDScript",
+"path": "res://src/App.gd"
+}, {
+"base": "Node",
 "class": "CameraSwitcher",
 "language": "GDScript",
 "path": "res://src/debug/CameraSwitcher.gd"
 }, {
-"base": "Node",
-"class": "Child",
-"language": "GDScript",
-"path": "res://examples/Ready-Virtual-Method/ChildrenScript.gd"
-}, {
-"base": "Node",
-"class": "Human",
-"language": "GDScript",
-"path": "res://examples/SetGet-Keyword/Human.gd"
-}, {
 "base": "Reference",
-"class": "OtherScript",
+"class": "Version",
 "language": "GDScript",
-"path": "res://examples/Classes/OtherScript.gd"
-}, {
-"base": "Reference",
-"class": "Pipe",
-"language": "GDScript",
-"path": "res://src/geometry/Pipe.gd"
+"path": "res://src/utils/Version.gd"
 } ]
 _global_script_class_icons={
 "ActionMap": "",
+"App": "",
 "CameraSwitcher": "",
-"Child": "",
-"Human": "",
-"OtherScript": "",
-"Pipe": ""
+"Version": ""
 }
 
 [application]
 
 config/name="Treaker"
-run/main_scene="res://src/Main.tscn"
+run/main_scene="res://src/main/Main.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
 
-Global="*res://src/Global.gd"
+Global="*res://src/autoload/Global.gd"
 
 [physics]
 

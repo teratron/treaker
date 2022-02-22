@@ -25,16 +25,16 @@ func _ready():
 				node.current = false
 		i += 1
 	
-	if InputMap.has_action("ui_camera"):
-		listEvent = InputMap.get_action_list("ui_camera")
+	if InputMap.has_action("toggle_camera"):
+		listEvent = InputMap.get_action_list("toggle_camera")
 
 
 func _input(event):
-	if InputMap.has_action("ui_camera") && InputMap.action_has_event("ui_camera", event):
+	if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
 		pass
 	
 	if (event is InputEventKey or event is InputEventMouseButton) && event.pressed:
-		if event.is_action_pressed("ui_camera"):
+		if event.is_action_pressed("toggle_camera"):
 			list[index].current = false
 			if index >= lastIndex:
 				index = 0

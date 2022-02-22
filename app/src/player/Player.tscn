@@ -3,7 +3,7 @@
 [ext_resource path="res://src/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/player/Paddle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Ball.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/player/Boundary.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/player/BallTest.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 1, 0, 0, 1 )
@@ -34,4 +34,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Boundary" parent="." instance=ExtResource( 4 )]
+[node name="BallTest" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.45746, 2.8322, 0 )
