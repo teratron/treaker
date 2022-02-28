@@ -8,10 +8,6 @@ var list:      Array
 var listEvent: Array
 
 
-func _init():
-	pass
-
-
 func _ready():
 	list      = get_tree().get_nodes_in_group(Global.GROUP_CAMERA)
 	length    = len(list)
@@ -30,8 +26,8 @@ func _ready():
 
 
 func _input(event):
-	if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
-		pass
+#	if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
+#		pass
 	
 	if (event is InputEventKey or event is InputEventMouseButton) && event.pressed:
 		if event.is_action_pressed("toggle_camera"):
@@ -40,6 +36,6 @@ func _input(event):
 				index = 0
 			else:
 				index += 1
-			list[index].current = true
 			
+			list[index].current = true
 			print(list[index])
