@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 7 )
+size = Vector3( 2, 0.05, 0.05 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.0784314, 1, 0, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 6 )
+size = Vector3( 0.05, 2, 0.05 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0.298039, 1, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 0.05, 0.05, 2 )
+
+[node name="Axis" type="Spatial"]
+
+[node name="X" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Y" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../X")
+material/0 = null
+
+[node name="Z" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../X")
+material/0 = null

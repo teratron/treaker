@@ -1,4 +1,4 @@
-extends MeshInstance
+extends StaticBody
 
 
 #const MOVE_SPEED = 100
