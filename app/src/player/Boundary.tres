@@ -1,0 +1,11 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_cull_mode = 1
+
+[resource]
+material = SubResource( 1 )
+top_radius = 12.0
+bottom_radius = 12.0
+height = 10.0
+rings = 1

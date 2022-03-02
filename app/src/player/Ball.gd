@@ -8,15 +8,15 @@ extends RigidBody
 #var position = Transform()
 #
 ##onready var _initial_pos = position
-#
-#
+
+
 #func _ready():
 #	pass
 
 
 func _physics_process(_delta):
 	#transform = transform.orthonormalized()
-	print(transform.origin)
+	#print(global_transform.origin)
 	
 #	_speed += delta * 2
 #	transform.origin = Vector3(-_speed, -_speed, 0) * direction
