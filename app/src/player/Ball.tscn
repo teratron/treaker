@@ -11,7 +11,6 @@ bounce = 1.0
 
 [node name="Ball" type="RigidBody"]
 physics_material_override = SubResource( 2 )
-can_sleep = false
 axis_lock_linear_z = true
 script = ExtResource( 1 )
 

@@ -31,3 +31,7 @@ func _physics_process(_delta):
 #	direction = Vector3.UP
 #	position = _initial_pos
 #	_speed = DEFAULT_SPEED
+
+#func _integrate_forces(state):
+#	prints(state.angular_velocity)
+#	pass
