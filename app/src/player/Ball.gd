@@ -1,11 +1,12 @@
 extends RigidBody
 
 
-const DEFAULT_SPEED = 12
+const DEFAULT_SPEED = 500
 #
 var _speed = DEFAULT_SPEED
 #var direction = Vector3.UP
 #var position = Transform()
+#var velocity = Vector3(0,10,0)
 #
 ##onready var _initial_pos = position
 
@@ -13,18 +14,18 @@ var _speed = DEFAULT_SPEED
 func _ready():
 	#add_force(Vector3(0,10,0), Vector3(0,10,0))
 	#apply_impulse(Vector3(0,1,0), Vector3(0,10,0))
-	linear_velocity = Vector3(0,_speed,0)
+	linear_velocity = Vector3(0, _speed, 0)
 	pass
 
 
 func _physics_process(_delta):
+	#print(_delta)
 	#transform = transform.orthonormalized()
 	#print(global_transform.origin)
 	
 #	_speed += delta * 2
 #	transform.origin = Vector3(-_speed, -_speed, 0) * direction
 	
-	#prints(Vector3(-_speed, -_speed, 0), transform.origin)
 	#position += _speed * delta * direction
 	#transform = position.translated(Vector3(0, 1, 0))
 	pass
@@ -35,7 +36,6 @@ func _physics_process(_delta):
 #	position = _initial_pos
 #	_speed = DEFAULT_SPEED
 
-var velocity = Vector3(0,10,0)
 
 func _integrate_forces(state):
 	#prints(state.angular_velocity)
@@ -50,6 +50,7 @@ func _integrate_forces(state):
 #	else:
 #		state.linear_velocity = state.linear_velocity
 
-	state.linear_velocity = state.linear_velocity.normalized() * _speed
+	var delta = state.get_step()
+	state.linear_velocity = state.linear_velocity.normalized() * _speed * delta
 
 	pass
