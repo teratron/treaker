@@ -10,11 +10,14 @@ var _speed = DEFAULT_SPEED
 #
 ##onready var _initial_pos = position
 
+var player: Spatial
+
 
 func _ready():
 	#add_force(Vector3(0,10,0), Vector3(0,10,0))
 	#apply_impulse(Vector3(0,1,0), Vector3(0,10,0))
-	linear_velocity = Vector3(0, _speed, 0)
+	linear_velocity.y = _speed
+	print(player.get_node("Rotor/Paddle/Position3D").transform.origin)
 	pass
 
 

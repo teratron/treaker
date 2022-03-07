@@ -16,6 +16,9 @@ onready var camera := $Rotor/Camera
 #func _init():
 #	pass
 
+func _enter_tree():
+	$Ball.player = self
+
 
 func _ready():
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
