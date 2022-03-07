@@ -4,12 +4,12 @@
 
 [sub_resource type="CylinderMesh" id=1]
 flip_faces = true
-top_radius = 12.0
-bottom_radius = 12.0
+top_radius = 30.0
+bottom_radius = 30.0
 height = 10.0
 
 [sub_resource type="CylinderShape" id=2]
-radius = 15.0
+radius = 40.0
 height = 10.0
 
 [node name="Boundary" type="MeshInstance"]

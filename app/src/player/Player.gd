@@ -2,11 +2,11 @@ extends Spatial
 
 
 #var velocity  := Vector3()
-var angular_velocity: float = 0.5
-var radius_paddle:    float = 12
-var radius_camera:    float = 8
-var distance_camera:  float = 16
-var is_center_look:   bool  = false
+var angular_velocity: float = 2.0
+var radius_paddle:    float = 20
+var radius_camera:    float = 16
+var distance_camera:  float = 50
+var is_center_look:   bool  = true
 
 onready var rotor  := $Rotor
 onready var paddle := $Rotor/Paddle
