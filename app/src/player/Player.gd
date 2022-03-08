@@ -5,24 +5,34 @@ extends Spatial
 var angular_velocity: float = 2.0
 var radius_paddle:    float = 20
 var radius_camera:    float = 16
-var distance_camera:  float = 50
+var distance_camera:  float = 40
 var is_center_look:   bool  = true
 
+var ball:   RigidBody
+var paddle: StaticBody
+
 onready var rotor  := $Rotor
-onready var paddle := $Rotor/Paddle
 onready var camera := $Rotor/Camera
 
 
 #func _init():
 #	pass
 
+
 func _enter_tree():
-	$Ball.player = self
+	ball   = $Ball
+	paddle = $Rotor/Paddle
+	
+	ball.player   = self
+	paddle.player = self
 
 
 func _ready():
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
+	ball.transform.origin   = paddle.transform.origin + paddle.ball_position.transform.origin #Vector3(0, paddle.ball_position, 0)
+	#print(to_global(paddle.ball_position.transform.origin))
+	#ball.global_transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
 	pass
 
 
@@ -36,8 +46,6 @@ func _process(delta):
 		var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 		
 		if motion != Vector3.ZERO:
-			#rotor.global_rotate(Vector3(0, 0, 1), delta * motion.x)
-			#rotor.transform.basis *= Basis(Vector3(0, 0, 1), angular_velocity * delta)
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_velocity * delta * motion.x)
 			rotor.transform = rotor.transform.orthonormalized()
 	

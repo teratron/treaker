@@ -47,7 +47,10 @@ func _init():
 			},{
 				"action": "use_shot",
 				"deadzone": 0.5,
-				"events": {InputEventMouseButton: BUTTON_LEFT}
+				"events": {
+					InputEventKey: KEY_SPACE,
+					InputEventMouseButton: BUTTON_LEFT
+				}
 			},{
 				"action": "use_ability",
 				"deadzone": 0.5,
