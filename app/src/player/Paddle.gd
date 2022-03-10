@@ -2,15 +2,15 @@ extends StaticBody
 
 
 var player: Spatial
-var offset_y = 0.25
 
 onready var ball = player.ball
 onready var ball_position = $BallPosition
+onready var mesh_instance = $MeshInstance
 
 
 func _ready():
-	transform.origin.y = -offset_y
-	ball_position.transform = Transform(ball_position.transform.basis, Vector3(0, offset_y + ball.radius + 0.001, 0))
+	var height = mesh_instance.mesh.get_aabb().size.y
+	ball_position.transform = Transform(ball_position.transform.basis, Vector3(0, height * 0.5 + ball.radius + 0.001, 0))
 
 
 #func _on_Area_area_entered(area):
