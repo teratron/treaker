@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/player/Ball.gd" type="Script" id=1]
 [ext_resource path="res://src/player/Ball.tres" type="SphereMesh" id=2]
@@ -9,6 +9,9 @@ bounce = 1.0
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.4
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.6
 
 [node name="Ball" type="RigidBody"]
 physics_material_override = SubResource( 2 )
@@ -28,6 +31,11 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
 
 [node name="Axis" parent="." instance=ExtResource( 3 )]
 visible = false
