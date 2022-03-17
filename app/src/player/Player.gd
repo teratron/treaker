@@ -1,4 +1,4 @@
-extends Spatial
+class_name Player extends Spatial
 
 
 var direction := Vector3()
@@ -10,6 +10,7 @@ var distance_camera:  float = 40
 var is_center_look := false
 var is_ball_state  := false
 
+onready var fsm    := $StateMachine
 onready var rotor  := $Rotor
 onready var camera := $Rotor/Camera
 onready var paddle := $Rotor/Paddle
