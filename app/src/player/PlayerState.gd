@@ -1,10 +1,10 @@
-class_name PlayerState
+class_name PlayerState extends State
 
 
 var player: Player
 
 
-func _ready() -> void:
+func _ready():
 	yield(owner, "ready")
 	player = owner as Player
 	assert(player != null)

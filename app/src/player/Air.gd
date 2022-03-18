@@ -1,13 +1,13 @@
 extends PlayerState
 
 
-func enter(msg := {}) -> void:
+func enter(_msg := {}) -> void:
 #	if msg.has("do_jump"):
 #		player.velocity.y = -player.jump_impulse
 	pass
 
 
-func physics_update(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 #	var input_direction_x: float = (
 #		Input.get_action_strength("move_right")
 #		- Input.get_action_strength("move_left")

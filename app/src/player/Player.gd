@@ -36,7 +36,7 @@ func _ready():
 
 
 #func _physics_process(_delta):
-#	transform = transform.orthonormalized()
+#	rotor.transform = rotor.transform.orthonormalized()
 #	pass
 
 
@@ -51,7 +51,6 @@ func _process(delta):
 		
 		if motion != Vector3.ZERO:
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_velocity * delta * motion.x)
-			#rotor.transform = rotor.transform.orthonormalized()
 			
 			if !is_ball_state:
 				#print(paddle.ball_position.global_transform)
