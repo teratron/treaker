@@ -1,9 +1,7 @@
 extends RigidBody
 
 
-#var player: Spatial
-var speed: float = 600
-var direction := Vector3.UP
+export(float, 0, 1000) var speed = 600
 
 onready var radius = $MeshInstance.mesh.radius
 
@@ -20,10 +18,8 @@ func _integrate_forces(state):
 #		state.linear_velocity = state.linear_velocity
 
 
-func start() -> bool:
-	linear_velocity.y = speed
-	return true
-#	player.is_ball_state = true
+func start(direction: Vector3) -> void:
+	linear_velocity = direction.normalized() * speed
 
 
 #func reset() -> void:
