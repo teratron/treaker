@@ -10,9 +10,9 @@ extends Spatial
 #	print(get_viewport().print_tree())
 
 
-func _physics_process(_delta):
-	#print($Ball.global_transform.origin)
-	pass
+#func _physics_process(_delta):
+#	#print($Ball.global_transform.origin)
+#	pass
 
 
 #func _input(event):

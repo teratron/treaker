@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/debug/Debug.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/world/World.gd" type="Script" id=3]
 [ext_resource path="res://src/player/Boundary.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0235294, 0.494118, 0, 1 )
+
+[sub_resource type="CylinderMesh" id=2]
+material = SubResource( 1 )
+top_radius = 8.0
+bottom_radius = 8.0
+
+[sub_resource type="CylinderShape" id=3]
+radius = 8.0
 
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
@@ -14,7 +25,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2528, 0, 11 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="Boundary" parent="." instance=ExtResource( 5 )]
+[node name="Bricks" type="StaticBody" parent="Player"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Player/Bricks"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/Bricks"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="Boundary" parent="Player" instance=ExtResource( 5 )]
+skeleton = NodePath("../..")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 6 )

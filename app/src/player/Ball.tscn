@@ -24,6 +24,7 @@ can_sleep = false
 axis_lock_linear_z = true
 linear_damp = 0.0
 script = ExtResource( 1 )
+speed = 700.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
@@ -38,3 +39,4 @@ shape = SubResource( 1 )
 shape = SubResource( 3 )
 
 [node name="Axis" parent="." instance=ExtResource( 3 )]
+visible = false
