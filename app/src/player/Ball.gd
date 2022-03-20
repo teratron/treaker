@@ -1,9 +1,13 @@
 extends RigidBody
 
 
-export(float, 0, 1000) var speed = 600
+export(float, 0, 2000) var speed  = 600
 
-onready var radius = $MeshInstance.mesh.radius
+var radius = .6 setget set_radius
+
+
+func _ready():
+	set_radius(radius)
 
 
 func _integrate_forces(state):
@@ -16,6 +20,14 @@ func _integrate_forces(state):
 #			state.linear_velocity *= state.get_contact_local_normal(i)
 #	else:
 #		state.linear_velocity = state.linear_velocity
+
+
+func set_radius(param):
+	var mesh = $MeshInstance.mesh
+	mesh.radius = param
+	mesh.height = param * 2
+	$CollisionShape.shape.radius = param
+	$Area/CollisionShape.shape.radius = param + .2
 
 
 func start(direction: Vector3) -> void:

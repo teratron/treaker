@@ -18,14 +18,14 @@ onready var ball   := $Ball
 
 
 func _ready():
-	print(rotor.transform.basis)
+	#prints(rotor.transform)
 	#print(transform)
 	# Раставляем по местам
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	print(ball.transform.basis)
+	#print(ball.transform)
 
 
 #func _physics_process(_delta):
@@ -43,11 +43,14 @@ func _process(delta):
 		var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 		
 		if motion != Vector3.ZERO:
+			#prints(rotor.transform)
+			#prints(ball.transform)
 			#prints(rotor.transform.basis.y, paddle.ball_position.transform.basis.y)
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_velocity * delta * motion.x)
-			
+			#prints(rotor.transform.basis)
 			if !is_ball_state:
 				ball.transform = paddle.ball_position.transform
+				#ball.transform = -rotor.transform
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))
