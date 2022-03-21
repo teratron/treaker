@@ -21,11 +21,15 @@ func _ready():
 	#prints(rotor.transform)
 	#print(transform)
 	# Раставляем по местам
+	#yield(owner, "ready")
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	#print(ball.transform)
+	#prints(paddle.transform.origin, paddle.to_local(paddle.transform.origin), paddle.to_global(paddle.transform.origin))
+	#prints(transform.origin, to_local(paddle.transform.origin), to_global(paddle.transform.origin))
+	#prints(paddle.transform.origin, self.to_global(paddle.transform.origin), self.to_local(paddle.transform.origin))
+	#prints(paddle.transform.origin, rotor.to_global(paddle.transform.origin), rotor.to_local(paddle.transform.origin))
 
 
 #func _physics_process(_delta):
@@ -48,9 +52,14 @@ func _process(delta):
 			#prints(rotor.transform.basis.y, paddle.ball_position.transform.basis.y)
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_velocity * delta * motion.x)
 			#prints(rotor.transform.basis)
+			#prints(rotor.transform.origin, paddle.transform.origin)
+			#prints(rotor.transform.basis, rotor.to_global(Vector3.ZERO), rotor.to_local(rotor.to_global(Vector3.ZERO)))
+			#prints(to_local(rotor.transform.origin), to_local(paddle.transform.origin))
+			
 			if !is_ball_state:
-				ball.transform = paddle.ball_position.transform
-				#ball.transform = -rotor.transform
+				#ball.transform = paddle.ball_position.transform
+				#prints(paddle.transform.origin, rotor.to_global(paddle.transform.origin), rotor.to_local(paddle.transform.origin))
+				ball.transform = Transform(rotor.transform.basis, rotor.to_local(paddle.ball_position.transform.origin))
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))

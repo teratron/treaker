@@ -24,6 +24,7 @@ process_priority = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2528, 0, 11 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.923031, -0.211471, 0.321394, 0.321394, 0.883022, -0.34202, -0.211471, 0.418989, 0.883022, 0, 0, 0 )
 
 [node name="Bricks" type="StaticBody" parent="Player"]
 visible = false
