@@ -20,6 +20,7 @@ radial_segments = 8
 rings = 0
 
 [node name="Player" type="Spatial"]
+transform = Transform( 0.923031, -0.211471, 0.321394, 0.321394, 0.883022, -0.34202, -0.211471, 0.418989, 0.883022, 0, 0, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
