@@ -1,9 +1,8 @@
 extends RigidBody
 
 
-export(float, 0, 2000) var speed  = 600
-
-var radius = .6 setget set_radius
+export(float, 0, 2000) var speed = 600
+export(float) var radius = .6 setget set_radius
 
 
 func _ready():
@@ -11,8 +10,11 @@ func _ready():
 
 
 func _integrate_forces(state):
-	var delta = state.get_step()
-	state.linear_velocity = state.linear_velocity.normalized() * speed * delta
+	#print(transform.origin.z)
+	var step = state.get_step()
+	#prints(state.linear_velocity, state.linear_velocity.length(), linear_velocity.length())
+	#state.linear_velocity = state.linear_velocity.normalized() * speed * step
+	state.set_linear_velocity(state.linear_velocity.normalized() * speed * step)
 #	var count = state.get_contact_count()
 #	if count > 0:
 #		for i in range(count):

@@ -5,7 +5,7 @@ onready var ball_position := $BallPosition
 
 
 func set_ball_position(radius: float) -> void:
-	var err_rate = .001 * radius * 2
+	var err_rate = radius * 2 * .001
 	ball_position.transform.origin = Vector3(0, $MeshInstance.mesh.get_aabb().size.y * .5 + radius + err_rate, 0)
 
 

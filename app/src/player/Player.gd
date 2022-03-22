@@ -34,7 +34,8 @@ func _ready():
 
 
 #func _physics_process(_delta):
-#	rotor.transform = rotor.transform.orthonormalized()
+	#print(ball.transform.origin)
+	#rotor.transform = rotor.transform.orthonormalized()
 
 
 func _input(event):
@@ -60,7 +61,8 @@ func _process(delta):
 			if !is_ball_state:
 				#ball.transform.origin = paddle.ball_position.transform.origin
 				#prints(paddle.transform.origin, rotor.to_global(paddle.transform.origin), rotor.to_local(paddle.transform.origin))
-				ball.transform = Transform(rotor.transform.basis, rotor.to_global(paddle.transform.origin))
+				prints(transform.origin, paddle.transform.origin)
+				ball.transform = Transform(rotor.transform.basis, paddle.transform.origin)
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))

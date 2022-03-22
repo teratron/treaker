@@ -20,7 +20,6 @@ radial_segments = 8
 rings = 0
 
 [node name="Player" type="Spatial"]
-transform = Transform( 0.923031, -0.211471, 0.321394, 0.321394, 0.883022, -0.34202, -0.211471, 0.418989, 0.883022, 0, 0, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -34,6 +33,7 @@ __meta__ = {
 
 [node name="Axis" parent="Rotor" instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+visible = false
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 speed = 700.0

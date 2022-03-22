@@ -1,8 +1,8 @@
 extends MeshInstance
 
 
-func _init():
-	visible = false
+#func _init():
+#	visible = false
 
 
 func _ready():
