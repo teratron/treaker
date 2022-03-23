@@ -3,10 +3,10 @@ class_name Player extends Spatial
 
 var direction := Transform.IDENTITY
 #var velocity  := Vector3()
-var angular_velocity: float = 2.0
-var radius_paddle:    float = 20
-var radius_camera:    float = 16
-var distance_camera:  float = 30
+var angular_speed:   float = 2.0
+var radius_paddle:   float = 20
+var radius_camera:   float = 16
+var distance_camera: float = 30
 var is_center_look := false
 var is_ball_state  := false
 
@@ -17,9 +17,20 @@ onready var paddle := $Rotor/Paddle
 onready var ball   := $Ball
 
 
+#https://kidscancode.org/godot_recipes/math/transforms/
+
+#var direction = Vector3(1,0,0)
+#var speed = 30
+#
+#func _physics_process(delta):
+#    var local_velocity = direction * speed
+#    var global_velocity = global_transform.basis.xform(local_velocity)
+#
+#    if Input.is_key_pressed(KEY_W):
+#	linear_velocity = global_velocity
+
+
 func _ready():
-	#prints(rotor.transform)
-	#print(transform)
 	# Раставляем по местам
 	#yield(owner, "ready")
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
@@ -27,10 +38,6 @@ func _ready():
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
 	prints(rotor.transform.origin, paddle.transform.origin, rotor.to_global(paddle.transform.origin))
-	#prints(paddle.transform.origin, paddle.to_local(paddle.transform.origin), paddle.to_global(paddle.transform.origin))
-	#prints(transform.origin, to_local(paddle.transform.origin), to_global(paddle.transform.origin))
-	#prints(paddle.transform.origin, self.to_global(paddle.transform.origin), self.to_local(paddle.transform.origin))
-	#prints(paddle.transform.origin, rotor.to_global(paddle.transform.origin), rotor.to_local(paddle.transform.origin))
 
 
 #func _physics_process(_delta):
@@ -49,18 +56,9 @@ func _process(delta):
 		var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 		
 		if motion != Vector3.ZERO:
-			#prints(rotor.transform)
-			#prints(ball.transform)
-			#prints(rotor.transform.basis.y, paddle.ball_position.transform.basis.y)
-			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_velocity * delta * motion.x)
-			#prints(position.global_transform.origin, position.global_translate())
-			#prints(rotor.transform.origin, paddle.transform.origin)
-			#prints(rotor.transform.basis, rotor.to_global(Vector3.ZERO), rotor.to_local(rotor.to_global(Vector3.ZERO)))
-			#prints(to_local(rotor.transform.origin), to_local(paddle.transform.origin))
+			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if !is_ball_state:
-				#ball.transform.origin = paddle.ball_position.transform.origin
-				#prints(paddle.transform.origin, rotor.to_global(paddle.transform.origin), rotor.to_local(paddle.transform.origin))
 				prints(transform.origin, paddle.transform.origin)
 				ball.transform = Transform(rotor.transform.basis, paddle.transform.origin)
 		
