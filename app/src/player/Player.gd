@@ -1,14 +1,13 @@
 class_name Player extends Spatial
 
 
-var direction := Transform.IDENTITY
+var direction := Vector3.ZERO
 #var velocity  := Vector3()
 var angular_speed:   float = 2.0
 var radius_paddle:   float = 20
 var radius_camera:   float = 16
 var distance_camera: float = 30
 var is_center_look := false
-var is_ball_state  := false
 
 onready var state  := $StateMachine
 onready var rotor  := $Rotor
@@ -37,7 +36,7 @@ func _ready():
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	prints(rotor.transform.origin, paddle.transform.origin, rotor.to_global(paddle.transform.origin))
+	#prints(rotor.transform.origin, paddle.transform.origin, rotor.to_global(paddle.transform.origin))
 
 
 #func _physics_process(_delta):
@@ -45,10 +44,9 @@ func _ready():
 	#rotor.transform = rotor.transform.orthonormalized()
 
 
-func _input(event):
-	if !is_ball_state && (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
+func _unhandled_input(event):
+	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
 		ball.start(paddle.ball_position.transform.basis.y)
-		is_ball_state = true
 
 
 func _process(delta):
@@ -58,8 +56,8 @@ func _process(delta):
 		if motion != Vector3.ZERO:
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
-			if !is_ball_state:
-				prints(transform.origin, paddle.transform.origin)
+			if ball.is_parked:
+				#prints(transform.origin, paddle.transform.origin)
 				ball.transform = Transform(rotor.transform.basis, paddle.transform.origin)
 		
 		if is_center_look:
