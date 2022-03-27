@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Treaker"
-run/main_scene="res://src/main/Main.tscn"
+run/main_scene="res://src/world/World.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]

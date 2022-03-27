@@ -16,13 +16,10 @@ func _integrate_forces(state):
 	if !is_parked:
 		var length = state.linear_velocity.length()
 		if length < velocity || length > velocity:
-			#prints(state.linear_velocity, length)
-			#prints(state.linear_velocity.normalized() * velocity * step)
-			set_linear_velocity(state.linear_velocity.normalized() * velocity * state.get_step())
-			#prints(state.linear_velocity, to_global(state.linear_velocity))
+			set_linear_velocity(state.linear_velocity.normalized() * velocity) #* state.get_step())
+			#prints("ball", state.linear_velocity, to_global(state.linear_velocity))
+			#prints(state.linear_velocity, transform.basis.transposed())
 			#prints(state.linear_velocity.length())
-		
-		
 	
 #	var count = state.get_contact_count()
 #	if count > 0:
@@ -43,7 +40,7 @@ func set_radius(param) -> void:
 
 func start(direction: Vector3) -> void:
 	if is_parked:
-		set_linear_velocity(direction.normalized() * velocity * get_physics_process_delta_time())
+		set_linear_velocity(direction.normalized() * velocity) #* get_physics_process_delta_time())
 		is_parked = false
 
 

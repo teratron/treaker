@@ -6,5 +6,5 @@ extends MeshInstance
 
 
 func _ready():
-	mesh.flip_faces = true
+	#mesh.flip_faces = true
 	create_trimesh_collision()

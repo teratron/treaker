@@ -37,9 +37,14 @@ func _ready():
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
 	#prints(rotor.transform.origin, paddle.transform.origin, rotor.to_global(paddle.transform.origin))
+	#prints("player", transform.basis.y, to_global(transform.basis.y))
+	prints("player", transform.origin, to_global(transform.origin))
 
 
 #func _physics_process(_delta):
+	#if !ball.is_parked:
+		#prints("player", ball.linear_velocity, to_global(ball.linear_velocity), ball.to_global(ball.linear_velocity))
+		#prints("player", transform.basis.y, to_global(transform.basis.y)) #player (0, 20, 0) (-0.141314, 0.969846, 0.198566)
 	#print(ball.transform.origin)
 	#rotor.transform = rotor.transform.orthonormalized()
 
