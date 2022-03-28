@@ -1,9 +1,10 @@
 extends RigidBody
 
 
-export(float, 5, 100) var velocity = 20
+export(float, 5, 100) var speed = 20
 export(float) var radius = .6 setget set_radius
 
+var velocity  := Vector3.ZERO
 var is_parked := true
 
 
@@ -15,8 +16,9 @@ func _ready():
 func _integrate_forces(state):
 	if !is_parked:
 		var length = state.linear_velocity.length()
-		if length < velocity || length > velocity:
-			set_linear_velocity(state.linear_velocity.normalized() * velocity) #* state.get_step())
+		if length < speed || length > speed:
+			velocity = state.linear_velocity.normalized() * speed
+			set_linear_velocity(velocity) #* state.get_step())
 			#prints("ball", state.linear_velocity, to_global(state.linear_velocity))
 			#prints(state.linear_velocity, transform.basis.transposed())
 			#prints(state.linear_velocity.length())
@@ -38,10 +40,25 @@ func set_radius(param) -> void:
 	$Area/CollisionShape.shape.radius = param + .2
 
 
+func pause() -> void:
+	if is_parked:
+		#set_linear_velocity(Vector3.ZERO)
+		is_parked = false
+	else:
+		is_parked = true
+
+
 func start(direction: Vector3) -> void:
 	if is_parked:
-		set_linear_velocity(direction.normalized() * velocity) #* get_physics_process_delta_time())
+		velocity = direction.normalized() * speed
+		set_linear_velocity(velocity) #* get_physics_process_delta_time())
 		is_parked = false
+
+
+func stop() -> void:
+	if !is_parked:
+		set_linear_velocity(Vector3.ZERO)
+		is_parked = true
 
 
 #func reset() -> void:

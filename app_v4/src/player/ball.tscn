@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://re4uxq6sgxws"]
+
+[ext_resource type="Script" path="res://src/player/ball.gd" id="1_ynp55"]
+
+[node name="Ball" type="RigidDynamicBody3D"]
+script = ExtResource( "1_ynp55" )

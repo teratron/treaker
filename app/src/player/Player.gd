@@ -51,7 +51,10 @@ func _ready():
 
 func _unhandled_input(event):
 	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
-		ball.start(paddle.ball_position.transform.basis.y)
+		if ball.is_parked:
+			ball.start(paddle.ball_position.transform.basis.y)
+		else:
+			ball.stop()
 
 
 func _process(delta):
