@@ -21,7 +21,7 @@ rings = 0
 
 [sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
-albedo_color = Color( 0.996078, 1, 0.498039, 0.705882 )
+albedo_color = Color( 0.639216, 0.705882, 0.784314, 0.705882 )
 
 [sub_resource type="CylinderMesh" id=4]
 material = SubResource( 3 )

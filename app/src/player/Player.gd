@@ -36,9 +36,10 @@ func _ready():
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
 	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	#prints(rotor.transform.origin, paddle.transform.origin, rotor.to_global(paddle.transform.origin))
+	#prints(transform.basis, transform.basis.x + transform.basis.y)
 	#prints("player", transform.basis.y, to_global(transform.basis.y))
-	prints("player", transform.origin, to_global(transform.origin))
+	#prints("player", transform.origin, to_global(transform.origin))
+	#direction = transform.
 
 
 #func _physics_process(_delta):
@@ -52,6 +53,7 @@ func _ready():
 func _unhandled_input(event):
 	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
 		if ball.is_parked:
+			prints(paddle.ball_position.transform.basis.y)
 			ball.start(paddle.ball_position.transform.basis.y)
 		else:
 			ball.stop()

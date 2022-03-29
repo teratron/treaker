@@ -5,9 +5,9 @@ extends Spatial
 #	pass
 
 
-func _ready():
+#func _ready():
 	#prints("world", $Player.transform.basis.y, $Player.to_global(transform.basis.y))
-	prints("world", $Player.transform.origin, $Player.to_global(transform.origin))
+	#prints("world", $Player.transform.origin, $Player.to_global(transform.origin))
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #	print(get_viewport().print_tree())
 
