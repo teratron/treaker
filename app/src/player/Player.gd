@@ -40,20 +40,23 @@ func _ready():
 	#prints("player", transform.basis.y, to_global(transform.basis.y))
 	#prints("player", transform.origin, to_global(transform.origin))
 	#direction = transform.
+	prints(transform)
+	prints(paddle.transform)
+	prints(ball.transform)
 
 
 #func _physics_process(_delta):
-	#if !ball.is_parked:
+#	if !ball.is_parked:
 		#prints("player", ball.linear_velocity, to_global(ball.linear_velocity), ball.to_global(ball.linear_velocity))
 		#prints("player", transform.basis.y, to_global(transform.basis.y)) #player (0, 20, 0) (-0.141314, 0.969846, 0.198566)
-	#print(ball.transform.origin)
+		#prints(ball.linear_velocity)
 	#rotor.transform = rotor.transform.orthonormalized()
 
 
 func _unhandled_input(event):
 	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
 		if ball.is_parked:
-			prints(paddle.ball_position.transform.basis.y)
+			#prints(paddle.ball_position.transform.basis.y)
 			ball.start(paddle.ball_position.transform.basis.y)
 		else:
 			ball.stop()
@@ -67,6 +70,7 @@ func _process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.is_parked:
+				prints(paddle.global_transform)
 				#prints(transform.origin, paddle.transform.origin)
 				ball.transform = Transform(rotor.transform.basis, paddle.transform.origin)
 		
