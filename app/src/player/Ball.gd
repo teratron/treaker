@@ -15,8 +15,7 @@ func _ready():
 
 func _integrate_forces(state):
 	if !is_parked:
-		var length = state.linear_velocity.length()
-		if length < speed || length > speed:
+		if state.linear_velocity.length() != speed:
 			velocity = state.linear_velocity.normalized() * speed
 			set_linear_velocity(velocity) #* state.get_step())
 			#set_linear_velocity(global_transform.basis.xform(state.linear_velocity.normalized() * speed)) #* state.get_step())

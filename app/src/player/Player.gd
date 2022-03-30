@@ -70,9 +70,9 @@ func _process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.is_parked:
-				prints(paddle.global_transform)
-				#prints(transform.origin, paddle.transform.origin)
-				ball.transform = Transform(rotor.transform.basis, paddle.transform.origin)
+				#prints(paddle.global_transform)
+				prints(transform.origin, paddle.global_transform.origin)
+				ball.transform = Transform(rotor.transform.basis, to_global(paddle.ball_position.transform.origin) )
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))

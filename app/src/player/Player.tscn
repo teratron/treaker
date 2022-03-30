@@ -45,7 +45,6 @@ __meta__ = {
 
 [node name="Axis" parent="Rotor" instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-visible = false
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 

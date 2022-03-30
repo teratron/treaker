@@ -45,3 +45,4 @@ transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 9, 6 )
 
 [node name="Axis" parent="." instance=ExtResource( 4 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+visible = false
