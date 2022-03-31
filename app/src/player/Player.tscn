@@ -28,7 +28,7 @@ material = SubResource( 3 )
 flip_faces = true
 top_radius = 30.0
 bottom_radius = 30.0
-height = 0.6
+height = 0.2
 rings = 1
 
 [node name="Player" type="Spatial"]

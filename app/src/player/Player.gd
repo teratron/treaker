@@ -40,9 +40,14 @@ func _ready():
 	#prints("player", transform.basis.y, to_global(transform.basis.y))
 	#prints("player", transform.origin, to_global(transform.origin))
 	#direction = transform.
-	prints(transform)
+#	prints(transform)
+#	prints(transform.xform(Vector3.ZERO))
+#	prints(to_global(Vector3.ZERO))
+#	prints(to_local(Vector3.ZERO))
 	prints(paddle.transform)
-	prints(ball.transform)
+	prints(paddle.ball_position.transform)
+	#prints(ball.transform)
+	#prints(ball.transform.origin)
 
 
 #func _physics_process(_delta):
@@ -70,9 +75,9 @@ func _process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.is_parked:
-				#prints(paddle.global_transform)
-				prints(transform.origin, paddle.global_transform.origin)
-				ball.transform = Transform(rotor.transform.basis, to_global(paddle.ball_position.transform.origin) )
+				prints(ball.transform.origin)
+				#prints(rotor.transform.basis, paddle.ball_position.transform.origin)
+				ball.transform = Transform(rotor.transform.basis, paddle.ball_position.transform.origin)
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))
