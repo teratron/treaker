@@ -3,6 +3,8 @@ extends StaticBody
 
 onready var ball_position := $BallPosition
 
+var bp: Vector3
+
 
 func set_ball_position(radius: float) -> void:
 	var err_rate = radius * 2 * .001
