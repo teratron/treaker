@@ -34,8 +34,12 @@ func _ready():
 	#yield(owner, "ready")
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
-	paddle.set_ball_position(ball.radius)
-	ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
+	#paddle.set_ball_position(ball.radius)
+	#ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
+	
+	paddle.ball = Vector3(0, ball.radius, 0)
+	ball.transform.origin = paddle.transform.origin + paddle.ball
+	
 	#prints(transform.basis, transform.basis.x + transform.basis.y)
 	#prints("player", transform.basis.y, to_global(transform.basis.y))
 	#prints("player", transform.origin, to_global(transform.origin))
@@ -45,10 +49,10 @@ func _ready():
 #	prints(to_global(Vector3.ZERO))
 #	prints(to_local(Vector3.ZERO))
 	#prints(paddle.transform)
-	prints(ball.transform.origin, paddle.ball_position.transform.origin)
-	prints(paddle.transform.xform(paddle.ball_position.transform.origin))
-	prints(rotor.transform.xform(paddle.ball_position.transform.origin))
-	prints(transform.xform(paddle.ball_position.transform.origin))
+#	prints(ball.transform.origin, paddle.ball_position.transform.origin)
+#	prints(paddle.transform.xform(paddle.ball_position.transform.origin)) ##
+#	prints(rotor.transform.xform(paddle.ball_position.transform.origin))
+#	prints(transform.xform(paddle.ball_position.transform.origin))
 	#prints(ball.transform)
 	
 

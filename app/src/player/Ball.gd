@@ -29,7 +29,7 @@ func _integrate_forces(state):
 #		state.linear_velocity = state.linear_velocity
 
 
-func set_radius(param) -> void:
+func set_radius(param: float) -> void:
 	var mesh = $MeshInstance.mesh
 	mesh.radius = param
 	mesh.height = param * 2
