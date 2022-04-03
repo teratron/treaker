@@ -17,16 +17,15 @@ onready var ball   := $Ball
 
 
 #https://kidscancode.org/godot_recipes/math/transforms/
-
 #var direction = Vector3(1,0,0)
 #var speed = 30
 #
 #func _physics_process(delta):
-#    var local_velocity = direction * speed
-#    var global_velocity = global_transform.basis.xform(local_velocity)
+#	var local_velocity = direction * speed
+#	var global_velocity = global_transform.basis.xform(local_velocity)
 #
-#    if Input.is_key_pressed(KEY_W):
-#	linear_velocity = global_velocity
+#	if Input.is_key_pressed(KEY_W):
+#		linear_velocity = global_velocity
 
 
 func _ready():
@@ -35,14 +34,7 @@ func _ready():
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
-	#print(paddle.ball_position)
-	ball.transform = paddle.ball_position
-	#ball.transform.origin = rotor.transform.xform_inv(paddle.transform.origin)
-	#ball.transform.origin = paddle.transform.xform(paddle.get_ball_position().origin)
-	#prints(paddle.transform.xform_inv(paddle.ball_position.origin), paddle.transform.origin)
-	#ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	#prints(ball.transform, paddle.transform.origin)
-	
+	ball_parked_position()
 
 
 #func _physics_process(_delta):
@@ -56,8 +48,7 @@ func _ready():
 func _unhandled_input(event):
 	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
 		if ball.is_parked:
-			#prints(paddle.ball_position.transform.basis.y)
-			ball.start(paddle.ball_position.transform.basis.y)
+			ball.start(ball.transform.basis.y)
 		else:
 			ball.stop()
 
@@ -70,13 +61,12 @@ func _process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.is_parked:
-				#prints(ball.transform.origin)
-				#prints(rotor.transform.basis, paddle.ball_position.transform.origin)
-				#ball.transform = Transform(rotor.transform.basis, paddle.ball_position.transform.origin)
-				#ball.transform.origin = rotor.transform.xform_inv(paddle.ball_position.origin)
-				#print(paddle.ball_position)
-				ball.transform.origin = rotor.transform.xform_inv(paddle.ball_position.origin)
-				#print(rotor.transform.xform_inv(paddle.ball_position.origin))
+				ball_parked_position()
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))
+
+
+func ball_parked_position():
+	ball.transform.basis  = rotor.transform.basis
+	ball.transform.origin = rotor.transform.xform(paddle.ball_position)

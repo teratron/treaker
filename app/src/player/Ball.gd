@@ -29,12 +29,12 @@ func _integrate_forces(state):
 #		state.linear_velocity = state.linear_velocity
 
 
-func set_radius(param: float) -> void:
+func set_radius(value: float) -> void:
 	var mesh = $MeshInstance.mesh
-	mesh.radius = param
-	mesh.height = param * 2
-	$CollisionShape.shape.radius = param
-	$Area/CollisionShape.shape.radius = param + .2
+	mesh.radius = value
+	mesh.height = value * 2
+	$CollisionShape.shape.radius = value
+	$Area/CollisionShape.shape.radius = value + .2
 
 
 func pause() -> void:
