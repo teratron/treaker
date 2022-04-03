@@ -21,6 +21,7 @@ custom_integrator = true
 continuous_cd = true
 contacts_reported = 4
 contact_monitor = true
+sleeping = true
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
