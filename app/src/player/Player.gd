@@ -34,14 +34,14 @@ func _ready():
 	#yield(owner, "ready")
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
-	paddle.init_ball_position(ball.radius)
+	paddle.set_ball_position(ball.radius)
 	#print(paddle.ball_position)
 	ball.transform = paddle.ball_position
 	#ball.transform.origin = rotor.transform.xform_inv(paddle.transform.origin)
 	#ball.transform.origin = paddle.transform.xform(paddle.get_ball_position().origin)
 	#prints(paddle.transform.xform_inv(paddle.ball_position.origin), paddle.transform.origin)
 	#ball.transform.origin = paddle.transform.origin + paddle.ball_position.transform.origin
-	prints(ball.transform, paddle.transform.origin)
+	#prints(ball.transform, paddle.transform.origin)
 	
 
 
@@ -76,7 +76,7 @@ func _process(delta):
 				#ball.transform.origin = rotor.transform.xform_inv(paddle.ball_position.origin)
 				#print(paddle.ball_position)
 				ball.transform.origin = rotor.transform.xform_inv(paddle.ball_position.origin)
-				print(rotor.transform.xform_inv(paddle.ball_position.origin))
+				#print(rotor.transform.xform_inv(paddle.ball_position.origin))
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))

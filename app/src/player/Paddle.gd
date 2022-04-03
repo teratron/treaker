@@ -2,8 +2,6 @@ extends StaticBody
 
 
 #onready var _ball_position := $BallPosition
-#
-
 
 #var ball: Vector3 setget set_ball_position, get_ball_position
 var ball_position: Transform setget, get_ball_position
@@ -15,27 +13,21 @@ var ball_position: Transform setget, get_ball_position
 #	#print(ball_position)
 
 
-#func get_ball_position() -> Vector3:
-#	return ball
-
-
 #func _ready():
 #	yield(owner, "ready")
 
-func init_ball_position(radius: float) -> void:
+
+func set_ball_position(radius: float) -> void:
 	$BallPosition.transform.origin.y = $MeshInstance.mesh.get_aabb().size.y * .5 + radius * 1.002
-	$BallPosition.transform.origin.x = 1
-	#ball_position = $BallPosition.transform
-
-
-#func set_ball_position(position: Transform) -> void:
-#	ball_position = transform.xform($BallPosition.transform)
 
 
 func get_ball_position() -> Transform:
 	#print(get_parent())
 	#return $BallPosition.transform
-	return Transform($BallPosition.transform.basis, transform.xform($BallPosition.transform.origin))
+	var pos := $BallPosition
+	#var z = Vector3.ZERO #pos.transform.origin
+	#prints(transform.xform(z), owner.get_child(0).transform.xform(z), owner.transform.xform(z), owner.get_child(0))
+	return Transform(pos.transform.basis, transform.xform(pos.transform.origin))
 
 
 func _on_Area_area_entered(_area):
