@@ -7,9 +7,6 @@ onready var ball := $BallPosition
 
 
 func set_ball_position(radius: float) -> void:
-	#print($CollisionShape.shape.set_faces(PoolVector3Array($CSGCylinder.get_meshes())))
-	#print($CSGCylinder/CSGPolygon.is_root_shape())
-	#ball.transform.origin.y = $CSGCylinder.get_aabb().size.y * .5 + radius * 1.002
 	ball.transform.origin.y = ($CSGCylinder.radius - $CSGCylinder/CSGCylinder.radius) * .5 + radius
 
 
