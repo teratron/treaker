@@ -56,12 +56,17 @@ func _init():
 				"deadzone": 0.5,
 				"events": {InputEventKey: KEY_ALT}
 			},{
+				"action": "ui_pause",
+				"deadzone": 0.5,
+				"events": {InputEventKey: KEY_P}
+			},{
+				"action": "ui_restart",
+				"deadzone": 0.5,
+				"events": {InputEventMouseButton: BUTTON_RIGHT}
+			},{
 				"action": "toggle_camera",
 				"deadzone": 0.5,
-				"events": {
-					InputEventKey: KEY_C,
-					InputEventMouseButton: BUTTON_RIGHT
-				}
+				"events": {InputEventKey: KEY_C}
 			},{
 				"action": "toggle_mouse_captured",
 				"deadzone": 0.5,

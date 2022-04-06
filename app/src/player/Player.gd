@@ -38,19 +38,22 @@ func _ready():
 
 
 #func _physics_process(_delta):
-#	if !ball.is_parked:
-		#prints("player", ball.linear_velocity, to_global(ball.linear_velocity), ball.to_global(ball.linear_velocity))
-		#prints("player", transform.basis.y, to_global(transform.basis.y)) #player (0, 20, 0) (-0.141314, 0.969846, 0.198566)
-		#prints(ball.linear_velocity)
 	#rotor.transform = rotor.transform.orthonormalized()
 
 
 func _unhandled_input(event):
-	if (event is InputEventKey || InputEventMouseButton) && event.is_action_pressed("use_shot"):
-		if ball.is_parked:
-			ball.start(ball.transform.basis.y)
-		else:
-			ball.stop()
+	if event is InputEventKey || InputEventMouseButton:
+		if event.is_action_pressed("use_shot"):
+			if ball.is_parked:
+				ball.start(ball.transform.basis.y)
+		
+		if event.is_action_pressed("ui_pause"):
+			ball.pause()
+		
+		if event.is_action_pressed("ui_restart"):
+			if !ball.is_parked:
+				ball.stop()
+				ball_parked_position()
 
 
 func _process(delta):
