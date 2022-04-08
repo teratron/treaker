@@ -1,11 +1,14 @@
 extends RigidBody
 
 
+enum {PARKED, HOVERED, PAUSED}
+
 export(float, 5, 100) var speed = 20
 export(float) var radius = .6 setget set_radius
 
-var velocity  := Vector3.ZERO
-var is_parked := true
+var velocity := Vector3.ZERO
+#var is_parked := true
+var state := PARKED
 
 
 func _ready():
@@ -14,7 +17,9 @@ func _ready():
 
 
 func _integrate_forces(state):
-	if !is_parked:
+	print(state.linear_velocity.length())
+	#if !is_parked:
+	if state == HOVERED:
 		if state.linear_velocity.length() != speed:
 			velocity = state.linear_velocity.normalized() * speed
 			set_linear_velocity(velocity) #* state.get_step())
