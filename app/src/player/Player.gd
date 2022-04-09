@@ -44,15 +44,15 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventKey || InputEventMouseButton:
 		if event.is_action_pressed("use_shot"):
-			if ball.is_parked:
+			if ball.status == ball.PARKED:
 				ball.start(ball.transform.basis.y)
 		
 		if event.is_action_pressed("ui_pause"):
 			ball.pause()
 		
 		if event.is_action_pressed("ui_restart"):
-			if !ball.is_parked:
-				ball.stop()
+			if ball.status != ball.PARKED:
+				ball.reset()
 				ball_parked_position()
 
 
@@ -63,13 +63,14 @@ func _process(delta):
 		if motion != Vector3.ZERO:
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
-			if ball.is_parked:
+			if ball.status == ball.PARKED:
 				ball_parked_position()
 		
 		if is_center_look:
 			camera.look_at(rotor.transform.origin, Vector3(0, 0, 1))
 
 
-func ball_parked_position():
+func ball_parked_position() -> void:
 	ball.transform.basis  = rotor.transform.basis
 	ball.transform.origin = rotor.transform.xform(paddle.ball_position)
+	return

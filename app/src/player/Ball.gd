@@ -7,8 +7,7 @@ export(float, 5, 100) var speed = 20
 export(float) var radius = .6 setget set_radius
 
 var velocity := Vector3.ZERO
-#var is_parked := true
-var state := PARKED
+var status   := PARKED
 
 
 func _ready():
@@ -17,13 +16,9 @@ func _ready():
 
 
 func _integrate_forces(state):
-	print(state.linear_velocity.length())
-	#if !is_parked:
-	if state == HOVERED:
-		if state.linear_velocity.length() != speed:
-			velocity = state.linear_velocity.normalized() * speed
-			set_linear_velocity(velocity) #* state.get_step())
-			#set_linear_velocity(global_transform.basis.xform(state.linear_velocity.normalized() * speed)) #* state.get_step())
+	if status == HOVERED:
+		velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+		set_linear_velocity(velocity)
 	
 #	var count = state.get_contact_count()
 #	if count > 0:
@@ -40,29 +35,32 @@ func set_radius(value: float) -> void:
 	mesh.height = value * 2
 	$CollisionShape.shape.radius = value
 	$Area/CollisionShape.shape.radius = value + .2
+	return
 
 
 func pause() -> void:
-	if is_parked:
-		start(velocity)
-	else:
-		stop()
+	if status != PARKED:
+		if status == PAUSED:
+			start(velocity)
+		else:
+			stop()
+			status = PAUSED
+	return
+
+
+func reset() -> void:
+	stop()
+	status = PARKED
+	return
 
 
 func start(direction: Vector3) -> void:
-	#if is_parked:
-		velocity = direction.normalized() * speed
-		set_linear_velocity(velocity) #* get_physics_process_delta_time())
-		is_parked = false
+	velocity = direction.normalized() * speed
+	set_linear_velocity(velocity) #* get_physics_process_delta_time())
+	status = HOVERED
+	return
 
 
 func stop() -> void:
-	#if !is_parked:
-		set_linear_velocity(Vector3.ZERO)
-		is_parked = true
-
-
-#func reset() -> void:
-#	direction = Vector3.UP
-#	position = _initial_pos
-#	_speed = DEFAULT_SPEED
+	set_linear_velocity(Vector3.ZERO)
+	return
