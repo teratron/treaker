@@ -1,16 +1,20 @@
 class_name ActionState extends Node
 
 
-func _unhandled_input(_event):
-	#state.unhandled_input(event)
+var action_machine = null
+
+
+func input(_event: InputEvent) -> void:
 	pass
 
 
-func _process(_delta):
-	#state.process(delta)
+func unhandled_input(_event: InputEvent) -> void:
 	pass
 
 
-func _physics_process(_delta):
-	#state.physics_process(delta)
+func process(_delta: float) -> void:
+	pass
+
+
+func physics_process(_delta: float) -> void:
 	pass

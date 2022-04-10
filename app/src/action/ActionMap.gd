@@ -10,7 +10,6 @@ func add_action_map_list(list) -> void:
 				_set_action_map_item(item)
 		_:
 			printerr("error: map list not exist")
-	return
 
 
 func _set_action_map_item(item: Dictionary) -> void:
@@ -40,7 +39,6 @@ func _set_action_map_item(item: Dictionary) -> void:
 				_add_action_event(funcref(self, name), item["action"], item["events"][key])
 	else:
 		printerr("error: action not exist")
-	return
 
 
 func _add_action_event(function: FuncRef, action: String, value) -> void:
@@ -52,59 +50,50 @@ func _add_action_event(function: FuncRef, action: String, value) -> void:
 				function.call_func(action, value[i])
 		_:
 			 printerr("error: unexpected results: ", function.get_function())
-	return
 
 
 func _add_action(funcName: String, action: String, value) -> void:
 	if !InputMap.has_action(action):
 		InputMap.add_action(action)
 	_add_action_event(funcref(self, funcName), action, value)
-	return
 
 
 # Keyboard
 func add_action_key(action: String, code) -> void:
 	_add_action("_set_action_key", action, code)
-	return
 
 
 func _set_action_key(action: String, code) -> void:
 	var event = InputEventKey.new()
 	event.scancode = code
 	InputMap.action_add_event(action, event)
-	return
 
 
 # Mouse button
 func add_action_mouse_button(action: String, index) -> void:
 	_add_action("_set_action_mouse_button", action, index)
-	return
 
 
 func _set_action_mouse_button(action: String, index) -> void:
 	var event = InputEventMouseButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
-	return
 
 
 # Joypad button
 func add_action_joypad_button(action: String, index) -> void:
 	_add_action("_set_action_joypad_button", action, index)
-	return
 
 
 func _set_action_joypad_button(action: String, index) -> void:
 	var event = InputEventJoypadButton.new()
 	event.button_index = index
 	InputMap.action_add_event(action, event)
-	return
 
 
 # Joypad motion
 func add_action_joypad_motion(action: String, axis: int, axis_value: float) -> void:
 	_add_action("_set_action_joypad_motion", action, {"axis": axis, "axis_value": axis_value})
-	return
 
 
 func _set_action_joypad_motion(action: String, param) -> void:
@@ -112,4 +101,3 @@ func _set_action_joypad_motion(action: String, param) -> void:
 	event.axis = param.axis
 	event.axis_value = param.axis_value
 	InputMap.action_add_event(action, event)
-	return
