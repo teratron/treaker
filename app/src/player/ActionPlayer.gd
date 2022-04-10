@@ -2,17 +2,33 @@ extends ActionState
 
 
 var player: Player
+var ball:   RigidBody
 
 
 func _ready():
 	yield(owner, "ready")
-	player = owner as Player
+	#prints(action_machine, action_parent, action_owner)
+	#player = owner as Player
+	player = action_parent as Player
 	assert(player != null)
-#	yield($"/root/World", "ready")
-#	print(action_machine)
+	ball = player.ball
+	#yield(get_viewport(), "ready")
+	#prints(action_machine, action_parent, action_owner)
+	#prints(get_tree().root, get_viewport())
+	#yield($"/root", "ready")
+	#print(action_machine)
 
 
-func input(event):
-	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_T:
-			print("T was pressed")
+func unhandled_input(event):
+	if event is InputEventKey || InputEventMouseButton:
+		if event.is_action_pressed("use_shot"):
+			if ball.status == ball.PARKED:
+				ball.start(ball.transform.basis.y)
+		
+		if event.is_action_pressed("ui_pause"):
+			ball.pause()
+		
+		if event.is_action_pressed("ui_restart"):
+			if ball.status != ball.PARKED:
+				ball.reset()
+				player.ball_parked_position()

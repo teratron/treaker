@@ -9,7 +9,7 @@ var radius_camera:   float = 16
 var distance_camera: float = 30
 var is_center_look := false
 
-onready var state  := $StateMachine
+#onready var state  := $StateMachine
 onready var rotor  := $Rotor
 onready var camera := $Rotor/Camera
 onready var paddle := $Rotor/Paddle
@@ -29,8 +29,6 @@ onready var ball   := $Ball
 
 
 func _ready():
-	# Раставляем по местам
-	#yield(owner, "ready")
 	camera.transform.origin = Vector3(0, -radius_camera, distance_camera)
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
@@ -41,19 +39,19 @@ func _ready():
 	#rotor.transform = rotor.transform.orthonormalized()
 
 
-func _unhandled_input(event):
-	if event is InputEventKey || InputEventMouseButton:
-		if event.is_action_pressed("use_shot"):
-			if ball.status == ball.PARKED:
-				ball.start(ball.transform.basis.y)
-		
-		if event.is_action_pressed("ui_pause"):
-			ball.pause()
-		
-		if event.is_action_pressed("ui_restart"):
-			if ball.status != ball.PARKED:
-				ball.reset()
-				ball_parked_position()
+#func _unhandled_input(event):
+#	if event is InputEventKey || InputEventMouseButton:
+#		if event.is_action_pressed("use_shot"):
+#			if ball.status == ball.PARKED:
+#				ball.start(ball.transform.basis.y)
+#
+#		if event.is_action_pressed("ui_pause"):
+#			ball.pause()
+#
+#		if event.is_action_pressed("ui_restart"):
+#			if ball.status != ball.PARKED:
+#				ball.reset()
+#				ball_parked_position()
 
 
 func _process(delta):
@@ -73,4 +71,3 @@ func _process(delta):
 func ball_parked_position() -> void:
 	ball.transform.basis  = rotor.transform.basis
 	ball.transform.origin = rotor.transform.xform(paddle.ball_position)
-	return

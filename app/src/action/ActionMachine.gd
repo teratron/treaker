@@ -1,12 +1,14 @@
 class_name ActionMachine extends Node
 
 
+#onready var state: ActionState = get_node("/root/World/Debug/CameraFloat/ActionDebug")
 onready var state: ActionState = get_node("/root/World/Player/ActionPlayer")
 
 
 func _ready():
 	#yield(owner, "ready")
-	print(state)
+	#print(state)
+	
 	state.action_machine = self
 #	yield(owner, "ready")
 #	for child in get_children():
