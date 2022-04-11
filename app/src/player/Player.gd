@@ -44,17 +44,17 @@ func unhandled_input(event):
 		if event.is_action_pressed("use_shot"):
 			if ball.status == ball.PARKED:
 				ball.start(ball.transform.basis.y)
-
+		
 		if event.is_action_pressed("ui_pause"):
 			ball.pause()
-
+		
 		if event.is_action_pressed("ui_restart"):
 			if ball.status != ball.PARKED:
 				ball.reset()
 				ball_parked_position()
 
 
-func _process(delta):
+func process(delta):
 	if Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left"):
 		var motion = Vector3(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 0, 0)
 		

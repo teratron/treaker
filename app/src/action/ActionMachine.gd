@@ -24,6 +24,10 @@ func _unhandled_input(event):
 	state.unhandled_input(event)
 
 
+func _unhandled_key_input(event):
+	state.unhandled_key_input(event)
+
+
 func _process(delta):
 	state.process(delta)
 

@@ -21,6 +21,10 @@ func unhandled_input(_event: InputEvent) -> void:
 	pass
 
 
+func unhandled_key_input(event: InputEventKey) -> void:
+	pass
+
+
 func process(_delta: float) -> void:
 	pass
 
