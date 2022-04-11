@@ -20,15 +20,16 @@ func _ready():
 
 
 func unhandled_input(event):
-	if event is InputEventKey || InputEventMouseButton:
-		if event.is_action_pressed("use_shot"):
-			if ball.status == ball.PARKED:
-				ball.start(ball.transform.basis.y)
-		
-		if event.is_action_pressed("ui_pause"):
-			ball.pause()
-		
-		if event.is_action_pressed("ui_restart"):
-			if ball.status != ball.PARKED:
-				ball.reset()
-				player.ball_parked_position()
+	player.unhandled_input(event)
+#	if event is InputEventKey || InputEventMouseButton:
+#		if event.is_action_pressed("use_shot"):
+#			if ball.status == ball.PARKED:
+#				ball.start(ball.transform.basis.y)
+#
+#		if event.is_action_pressed("ui_pause"):
+#			ball.pause()
+#
+#		if event.is_action_pressed("ui_restart"):
+#			if ball.status != ball.PARKED:
+#				ball.reset()
+#				player.ball_parked_position()

@@ -39,19 +39,19 @@ func _ready():
 	#rotor.transform = rotor.transform.orthonormalized()
 
 
-#func _unhandled_input(event):
-#	if event is InputEventKey || InputEventMouseButton:
-#		if event.is_action_pressed("use_shot"):
-#			if ball.status == ball.PARKED:
-#				ball.start(ball.transform.basis.y)
-#
-#		if event.is_action_pressed("ui_pause"):
-#			ball.pause()
-#
-#		if event.is_action_pressed("ui_restart"):
-#			if ball.status != ball.PARKED:
-#				ball.reset()
-#				ball_parked_position()
+func unhandled_input(event):
+	if event is InputEventKey || InputEventMouseButton:
+		if event.is_action_pressed("use_shot"):
+			if ball.status == ball.PARKED:
+				ball.start(ball.transform.basis.y)
+
+		if event.is_action_pressed("ui_pause"):
+			ball.pause()
+
+		if event.is_action_pressed("ui_restart"):
+			if ball.status != ball.PARKED:
+				ball.reset()
+				ball_parked_position()
 
 
 func _process(delta):
