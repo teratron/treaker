@@ -9,8 +9,7 @@ func enter(_msg := {}) -> void:
 
 func physics_process(_delta: float) -> void:
 #	var input_direction_x: float = (
-#		Input.get_action_strength("move_right")
-#		- Input.get_action_strength("move_left")
+#		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 #	)
 #	player.velocity.x = player.speed * input_direction_x
 #	player.velocity.y += player.gravity * delta

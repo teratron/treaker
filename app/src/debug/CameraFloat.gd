@@ -8,7 +8,7 @@ var rotate   = Vector3()
 var velocity = Vector3()
 
 
-func _input(event):
+func input(event):
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# Horizontal mouse look.
 		rotate.y -= event.relative.x * MOUSE_SENSITIVITY
@@ -17,7 +17,7 @@ func _input(event):
 		transform.basis = Basis(rotate)
 
 
-func _process(delta):
+func process(delta):
 	var motion = Vector3(
 		Input.get_action_strength("move_right")    - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_up")       - Input.get_action_strength("move_down"),

@@ -3,20 +3,31 @@ class_name StateMachine extends Node
 
 signal transitioned(state_name)
 
-export var initial_state := NodePath()
+#export var initial_state := NodePath("/root/World/Player/ActionPlayer")
+#onready var state: State = get_node(initial_state)
 
-onready var state: State = get_node(initial_state)
+var state: State
 
 
 func _ready():
 	yield(owner, "ready")
 	for child in get_children():
 		child.state_machine = self
-	state.enter()
+	
+	if state != null:
+		state.enter()
+
+
+func _input(event):
+	state.input(event)
 
 
 func _unhandled_input(event):
 	state.unhandled_input(event)
+
+
+func _unhandled_key_input(event):
+	state.unhandled_key_input(event)
 
 
 func _process(delta):

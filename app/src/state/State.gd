@@ -2,9 +2,26 @@ class_name State extends Node
 
 
 var state_machine = null
+var state_parent  = null
+var state_owner   = null
+
+
+func _ready():
+	yield(owner, "ready")
+	state_parent = get_parent()
+	state_owner  = owner
+	assert(state_parent != null && state_owner != null)
+
+
+func input(_event: InputEvent) -> void:
+	pass
 
 
 func unhandled_input(_event: InputEvent) -> void:
+	pass
+
+
+func unhandled_key_input(_event: InputEventKey) -> void:
 	pass
 
 

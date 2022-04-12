@@ -1,4 +1,4 @@
-extends ActionState
+extends State
 
 
 var player: Player
@@ -6,7 +6,7 @@ var player: Player
 
 func _ready():
 	yield(owner, "ready")
-	player = action_parent as Player
+	player = state_parent as Player
 	assert(player != null)
 
 

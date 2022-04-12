@@ -15,7 +15,7 @@ func _ready():
 	var i = 0
 	for node in list:
 		if node is Camera && node.current:
-			if index == -1: #get_parent() != $Debug && 
+			if index == -1:
 				index = i
 			else:
 				node.current = false
@@ -27,9 +27,7 @@ func _ready():
 
 func _input(event):
 #	if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
-#		pass
-	
-	if (event is InputEventKey or event is InputEventMouseButton) && event.pressed:
+	if (event is InputEventKey || event is InputEventMouseButton) && event.pressed:
 		if event.is_action_pressed("toggle_camera"):
 			list[index].current = false
 			if index >= lastIndex:
