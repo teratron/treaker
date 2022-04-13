@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/debug/CameraFloat.gd" type="Script" id=1]
 [ext_resource path="res://src/debug/Debug.gd" type="Script" id=2]
 [ext_resource path="res://src/debug/ActionDebug.gd" type="Script" id=3]
-
-[sub_resource type="CylinderMesh" id=1]
 
 [node name="Debug" type="Spatial"]
 script = ExtResource( 2 )
@@ -21,8 +19,3 @@ script = ExtResource( 3 )
 
 [node name="CameraStatic" type="Camera" parent="." groups=["camera"]]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40, 0, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
-mesh = SubResource( 1 )
-material/0 = null

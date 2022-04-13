@@ -35,7 +35,6 @@ func set_radius(value: float) -> void:
 	mesh.height = value * 2
 	$CollisionShape.shape.radius = value
 	$Area/CollisionShape.shape.radius = value + .2
-	return
 
 
 func pause() -> void:
@@ -45,22 +44,18 @@ func pause() -> void:
 		else:
 			stop()
 			status = PAUSED
-	return
 
 
 func reset() -> void:
 	stop()
 	status = PARKED
-	return
 
 
 func start(direction: Vector3) -> void:
 	velocity = direction.normalized() * speed
 	set_linear_velocity(velocity) #* get_physics_process_delta_time())
 	status = HOVERED
-	return
 
 
 func stop() -> void:
 	set_linear_velocity(Vector3.ZERO)
-	return
