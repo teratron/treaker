@@ -17,8 +17,12 @@ func _ready():
 
 func _integrate_forces(state):
 	if status == HOVERED:
+		#prints(velocity)
 		velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+		#velocity.z = 0
+		#prints(velocity, global_transform.basis.xform(velocity), transform.basis.xform(velocity))
 		set_linear_velocity(velocity)
+		#set_linear_velocity(transform.basis.xform(velocity))
 	
 #	var count = state.get_contact_count()
 #	if count > 0:

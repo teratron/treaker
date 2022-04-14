@@ -33,6 +33,13 @@ func _ready():
 	paddle.transform.origin = Vector3(0, -radius_paddle, 0)
 	paddle.set_ball_position(ball.radius)
 	ball_parked_position()
+	
+	#((1, 0, 0), (0, 0.984808, -0.173648), (0, 0.173648, 0.984807)) ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+	prints(transform.basis, rotor.transform.basis)
+	#(1, 0.984808, 0.173648) (1, 1, 0)
+	prints(transform.basis.xform(Vector3(1, 1, 0)), rotor.transform.basis.xform(Vector3(1, 1, 0)))
+	#prints(global_transform.basis, rotor.global_transform.basis)
+	#print(deg2rad(10))
 
 
 #func _physics_process(_delta):
@@ -62,6 +69,7 @@ func process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.status == ball.PARKED:
+				#prints(rotor.transform.basis, rotor.transform.basis.xform(ball.velocity))
 				ball_parked_position()
 		
 		if is_center_look:
