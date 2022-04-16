@@ -6,23 +6,27 @@ enum {PARKED, HOVERED, PAUSED}
 export(float, 5, 100) var speed = 20
 export(float) var radius = .6 setget set_radius
 
+onready var player := owner
+
 var velocity := Vector3.ZERO
 var status   := PARKED
 
 
 func _ready():
 	set_radius(radius)
-	#prints(linear_velocity, to_global(linear_velocity))
+	prints(player, player.transform.basis.xform(Vector3(1, 0, 1)))
+	#set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z, true)
 
 
 func _integrate_forces(state):
 	if status == HOVERED:
 		#prints(velocity)
 		velocity = state.linear_velocity.normalized() * speed #* state.get_step())
-		#velocity.z = 0
-		#prints(velocity, global_transform.basis.xform(velocity), transform.basis.xform(velocity))
-		set_linear_velocity(velocity)
-		#set_linear_velocity(transform.basis.xform(velocity))
+		velocity.z = 0
+		#velocity = player.global_transform.basis.xform(velocity)
+		#prints(velocity, player.transform.basis.xform(velocity))
+		#set_linear_velocity(velocity)
+		set_linear_velocity(player.transform.basis.xform(velocity))
 	
 #	var count = state.get_contact_count()
 #	if count > 0:

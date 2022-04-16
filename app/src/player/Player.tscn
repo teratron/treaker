@@ -26,7 +26,7 @@ material = SubResource( 3 )
 flip_faces = true
 top_radius = 30.0
 bottom_radius = 30.0
-height = 0.2
+height = 0.1
 rings = 1
 
 [node name="Player" type="Spatial"]
@@ -46,6 +46,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 visible = false
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
+mode = 0
 
 [node name="ActionPlayer" type="Node" parent="."]
 script = ExtResource( 8 )

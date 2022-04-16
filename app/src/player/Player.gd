@@ -37,7 +37,7 @@ func _ready():
 	#((1, 0, 0), (0, 0.984808, -0.173648), (0, 0.173648, 0.984807)) ((1, 0, 0), (0, 1, 0), (0, 0, 1))
 	prints(transform.basis, rotor.transform.basis)
 	#(1, 0.984808, 0.173648) (1, 1, 0)
-	prints(transform.basis.xform(Vector3(1, 1, 0)), rotor.transform.basis.xform(Vector3(1, 1, 0)))
+	prints(transform.basis.xform(Vector3(1, 0, 1)), rotor.transform.basis.xform(Vector3(1, 0, 1)))
 	#prints(global_transform.basis, rotor.global_transform.basis)
 	#print(deg2rad(10))
 
