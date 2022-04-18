@@ -20,8 +20,13 @@ func _ready():
 
 func _integrate_forces(state):
 	if status == HOVERED:
-		#prints(state.center_of_mass, state.total_gravity)
-		#prints(velocity)
+		move(state.linear_velocity.normalized())
+#		if !velocity.normalized().is_equal_approx(state.linear_velocity.normalized()):
+#			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+#			velocity.z = 0
+#			velocity = player.transform.basis.xform(velocity)
+#		set_linear_velocity(velocity)
+		#	prints(velocity.normalized(), state.linear_velocity.normalized())
 		
 		#velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 		#velocity.z = 0
@@ -31,18 +36,13 @@ func _integrate_forces(state):
 		#set_linear_velocity(velocity)
 		#set_linear_velocity(player.transform.basis.xform(velocity))
 		
-		var count = state.get_contact_count()
-		if count > 0:
-			velocity = state.linear_velocity.normalized() * speed
-			velocity.z = 0
-			velocity = player.transform.basis.xform(velocity)
+#		var count = state.get_contact_count()
+#		if count > 0:
 #			for i in range(count):
 #				prints(state.get_contact_local_normal(i), state.get_contact_local_position(i))
 #				state.linear_velocity *= state.get_contact_local_normal(i)
-		#else:
-			#set_linear_velocity(velocity)
-		
-		set_linear_velocity(velocity)
+#		else:
+#			set_linear_velocity(velocity)
 
 
 func set_radius(value: float) -> void:
@@ -68,11 +68,15 @@ func reset() -> void:
 
 
 func start(direction: Vector3) -> void:
-	velocity = direction.normalized() * speed
-	#velocity.z = 0
-	#set_linear_velocity(player.transform.basis.xform(velocity)) #* get_physics_process_delta_time())
-	set_linear_velocity(velocity) #* get_physics_process_delta_time())
+	move(direction.normalized())
 	status = HOVERED
+
+
+func move(value: Vector3) -> void:
+	velocity = value * speed #* get_physics_process_delta_time())
+	#velocity.z = 0
+	velocity = player.transform.basis.xform(velocity)
+	set_linear_velocity(velocity)
 
 
 func stop() -> void:
