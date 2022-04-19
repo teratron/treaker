@@ -42,6 +42,7 @@ func _ready():
 	
 	#prints(global_transform.basis, rotor.global_transform.basis)
 	#print(deg2rad(10))
+	#prints(transform.basis.xform(Vector3(0,1,0)), ball.player.transform.basis.xform(Vector3(0,1,0)))
 
 
 #func _physics_process(_delta):
@@ -52,7 +53,9 @@ func unhandled_input(event):
 	if event is InputEventKey || InputEventMouseButton:
 		if event.is_action_pressed("use_shot"):
 			if ball.status == ball.PARKED:
+				#prints(ball.transform.basis.y, transform.basis.xform(ball.transform.basis.y))
 				ball.start(ball.transform.basis.y)
+				#ball.start(transform.basis.xform(ball.transform.basis.y))
 		
 		if event.is_action_pressed("ui_pause"):
 			ball.pause()

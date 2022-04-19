@@ -3,14 +3,12 @@ class_name State extends Node
 
 var state_machine = null
 var state_parent  = null
-var state_owner   = null
 
 
 func _ready():
 	yield(owner, "ready")
 	state_parent = get_parent()
-	state_owner  = owner
-	assert(state_parent != null && state_owner != null)
+	assert(state_parent != null)
 
 
 func input(_event: InputEvent) -> void:
