@@ -47,6 +47,8 @@ func _ready():
 
 #func _physics_process(_delta):
 	#rotor.transform = rotor.transform.orthonormalized()
+	#transform = transform.orthonormalized()
+	#transform = transform.scaled(scale)
 
 
 func unhandled_input(event):
