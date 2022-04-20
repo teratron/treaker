@@ -84,7 +84,7 @@ func move(direction: Vector3) -> void:
 	#if !direction.is_normalized():
 	velocity = direction.normalized() * speed #* get_physics_process_delta_time())
 	#velocity.z = 0
-	velocity = player.transform.basis.xform(velocity)
+	#velocity = player.transform.basis.xform(velocity)
 	set_linear_velocity(velocity)
 
 

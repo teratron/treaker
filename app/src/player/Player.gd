@@ -55,9 +55,7 @@ func unhandled_input(event):
 	if event is InputEventKey || InputEventMouseButton:
 		if event.is_action_pressed("use_shot"):
 			if ball.status == ball.PARKED:
-				#prints(ball.transform.basis.y, transform.basis.xform(ball.transform.basis.y))
-				ball.start(ball.transform.basis.y)
-				#ball.start(transform.basis.xform(ball.transform.basis.y))
+				ball.start(transform.basis.xform(ball.transform.basis.y))
 		
 		if event.is_action_pressed("ui_pause"):
 			ball.pause()
