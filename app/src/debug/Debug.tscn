@@ -11,7 +11,7 @@ __meta__ = {
 }
 
 [node name="CameraFloat" type="Camera" parent="." groups=["camera"]]
-transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -10, 6, 19 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 16 )
 script = ExtResource( 1 )
 
 [node name="ActionDebug" type="Node" parent="CameraFloat"]

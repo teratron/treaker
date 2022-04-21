@@ -13,6 +13,7 @@ var status   := PARKED
 
 func _ready():
 	set_radius(radius)
+	#print(Vector3(7,3,1).project(Vector3(2,1,0)))
 	#yield(owner, "ready")
 	#prints(player, player.transform.basis.xform(Vector3(1, 0, 1)))
 	#set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z, true)
@@ -20,10 +21,15 @@ func _ready():
 
 func _integrate_forces(state):
 	if status == HOVERED:
+		
 		if !velocity.normalized().is_equal_approx(state.linear_velocity.normalized()):
-			move(state.linear_velocity)
-		else:
-			set_linear_velocity(velocity)
+			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+			#move(state.linear_velocity)
+			
+		#else:
+		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
+		prints(velocity, velocity.project(Vector3(1,1,0)))
+		set_linear_velocity(velocity)
 #			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 #			velocity.z = 0
 #			velocity = player.transform.basis.xform(velocity)
@@ -76,7 +82,9 @@ func reset() -> void:
 
 
 func start(direction: Vector3) -> void:
-	move(direction)
+	#move(direction)
+	velocity = direction.normalized() * speed #* get_physics_process_delta_time())
+	set_linear_velocity(velocity)
 	status = HOVERED
 
 
