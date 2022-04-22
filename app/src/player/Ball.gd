@@ -28,8 +28,8 @@ func _integrate_forces(state):
 			
 		#else:
 		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
-		prints(velocity, velocity.project(Vector3(1,1,0)))
-		set_linear_velocity(velocity)
+		prints(velocity, velocity.project(Vector3(1,1,0)), " - ", Vector3(1,1,0).project(velocity))
+		state.set_linear_velocity(velocity)
 #			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 #			velocity.z = 0
 #			velocity = player.transform.basis.xform(velocity)
