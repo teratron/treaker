@@ -27,6 +27,7 @@ script = ExtResource( 3 )
 [node name="Debug" parent="." instance=ExtResource( 1 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.984808, 0.0301537, 0.17101, 0, 0.984808, -0.173648, -0.173648, 0.17101, 0.969846, 0, 0, 0 )
 
 [node name="Bricks" type="StaticBody" parent="Player"]
 
