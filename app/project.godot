@@ -76,6 +76,14 @@ config/icon="res://assets/icon.png"
 
 Global="*res://src/autoload/Global.gd"
 
+[debug]
+
+gdscript/warnings/unused_class_variable=true
+
+[global]
+
+lock=false
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -24,12 +24,21 @@ func _integrate_forces(state):
 	if status == HOVERED:
 		
 		if !velocity.normalized().is_equal_approx(state.linear_velocity.normalized()):
-			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+			
+			#velocity = state.linear_velocity.normalized() * speed #* state.get_step())
+			velocity = Plane(player.transform.basis.z, 0).project(state.linear_velocity).normalized() * speed
 			#move(state.linear_velocity)
 		#else:
 		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
 		#prints(velocity, velocity.project(Vector3(1,1,0)), " - ", Vector3(1,1,0).project(velocity))
-		#prints(velocity, velocity)
+		prints(
+				Plane(player.transform.basis.z, 0).is_point_over(state.linear_velocity),
+				Plane(player.transform.basis.z, 0).has_point(to_global(transform.origin), 1.0),
+				Plane(player.transform.basis.z, 0).distance_to(to_global(transform.origin)),
+				#velocity,
+				Plane(player.transform.basis.z, 0).project(state.linear_velocity)
+			)
+		#prints(velocity, Plane(player.transform.basis.z, 0).project(velocity).normalized())
 		state.set_linear_velocity(velocity)
 #			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 #			velocity.z = 0
