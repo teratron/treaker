@@ -35,7 +35,7 @@ func _ready():
 	ball_parked_position()
 	ball.player = self
 	
-	prints(transform.basis)
+	#prints(transform.basis, Plane(transform.basis.z, 0)) #, Plane.PLANE_XY
 	#((1, 0, 0), (0, 0.984808, -0.173648), (0, 0.173648, 0.984807)) ((1, 0, 0), (0, 1, 0), (0, 0, 1))
 	#prints(transform.basis, rotor.transform.basis)
 	#(1, 0.984808, 0.173648) (1, 1, 0)

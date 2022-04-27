@@ -14,7 +14,8 @@ var status   := PARKED
 func _ready():
 	set_radius(radius)
 	#print(Vector3(7,3,1).project(Vector3(2,1,0)))
-	#yield(owner, "ready")
+	yield(owner, "ready")
+	prints(player.transform.basis, Plane(player.transform.basis.z, 0))
 	#prints(player, player.transform.basis.xform(Vector3(1, 0, 1)))
 	#set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z, true)
 
@@ -25,11 +26,10 @@ func _integrate_forces(state):
 		if !velocity.normalized().is_equal_approx(state.linear_velocity.normalized()):
 			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 			#move(state.linear_velocity)
-			
 		#else:
 		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
 		#prints(velocity, velocity.project(Vector3(1,1,0)), " - ", Vector3(1,1,0).project(velocity))
-		prints(velocity, velocity)
+		#prints(velocity, velocity)
 		state.set_linear_velocity(velocity)
 #			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
 #			velocity.z = 0
