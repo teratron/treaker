@@ -1,7 +1,7 @@
 class_name Player extends Spatial
 
 
-var direction := Vector3.ZERO
+#var direction := Vector3.ZERO
 #var velocity  := Vector3()
 var angular_speed:   float = 2.0
 var radius_paddle:   float = 20
@@ -9,11 +9,12 @@ var radius_camera:   float = 16
 var distance_camera: float = 30
 var is_center_look := false
 
-#onready var state  := $StateMachine
+onready var plane  := Plane(transform.basis.z, 0) setget set_plane#, get_plane
 onready var rotor  := $Rotor
 onready var camera := $Rotor/Camera
 onready var paddle := $Rotor/Paddle
 onready var ball   := $Ball
+#onready var state  := $StateMachine
 
 
 #https://kidscancode.org/godot_recipes/math/transforms/
@@ -58,7 +59,7 @@ func unhandled_input(event):
 			if ball.status == ball.PARKED:
 				ball.start(transform.basis.xform(ball.transform.basis.y))
 		
-		if event.is_action_pressed("ui_pause"):
+		if event.is_action_pressed("ui_pause") || (event.is_action_pressed("use_shot") && ball.status == ball.PAUSED):
 			ball.pause()
 		
 		if event.is_action_pressed("ui_restart"):
@@ -85,3 +86,11 @@ func process(delta):
 func ball_parked_position() -> void:
 	ball.transform.basis  = rotor.transform.basis
 	ball.transform.origin = rotor.transform.xform(paddle.ball_position)
+
+
+func set_plane(value) -> void:
+	plane = value
+
+
+#func get_plane() -> Plane:
+#	return Plane(transform.basis.z, 0)

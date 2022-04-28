@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/action/ActionMachine.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "ActionMap",
 "language": "GDScript",
 "path": "res://src/action/ActionMap.gd"
@@ -78,7 +78,11 @@ Global="*res://src/autoload/Global.gd"
 
 [debug]
 
-gdscript/warnings/unused_class_variable=true
+gdscript/completion/autocomplete_setters_and_getters=true
+
+[display]
+
+window/size/always_on_top=true
 
 [global]
 

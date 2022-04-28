@@ -7,54 +7,47 @@ export(float, 5, 100) var speed = 20
 export(float) var radius = .6 setget set_radius
 
 var player: Player
-var velocity := Vector3.ZERO
-var status   := PARKED
+var direction := Vector3.ZERO
+var velocity  := Vector3.ZERO
+var status    := PARKED
 
 
 func _ready():
 	set_radius(radius)
 	#print(Vector3(7,3,1).project(Vector3(2,1,0)))
 	yield(owner, "ready")
-	prints(player.transform.basis, Plane(player.transform.basis.z, 0))
+	prints(player.transform.basis, player.plane)
+	prints(player.plane)
+	prints(transform.origin)
 	#prints(player, player.transform.basis.xform(Vector3(1, 0, 1)))
 	#set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z, true)
 
 
 func _integrate_forces(state):
 	if status == HOVERED:
-		
-		if !velocity.normalized().is_equal_approx(state.linear_velocity.normalized()):
+		var dir = state.linear_velocity.normalized()
+		if !direction.is_equal_approx(dir):
 			
 			#velocity = state.linear_velocity.normalized() * speed #* state.get_step())
-			velocity = Plane(player.transform.basis.z, 0).project(state.linear_velocity).normalized() * speed
+			direction = player.plane.project(dir).normalized()
+			velocity  = direction * speed
 			#move(state.linear_velocity)
 		#else:
 		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
 		#prints(velocity, velocity.project(Vector3(1,1,0)), " - ", Vector3(1,1,0).project(velocity))
-		prints(
-				Plane(player.transform.basis.z, 0).is_point_over(state.linear_velocity),
-				Plane(player.transform.basis.z, 0).has_point(to_global(transform.origin), 1.0),
-				Plane(player.transform.basis.z, 0).distance_to(to_global(transform.origin)),
-				#velocity,
-				Plane(player.transform.basis.z, 0).project(state.linear_velocity)
-			)
-		#prints(velocity, Plane(player.transform.basis.z, 0).project(velocity).normalized())
+#		prints(
+#				player.plane.is_point_over(state.linear_velocity),
+#				player.plane.has_point(to_global(transform.origin), 1.0),
+#				player.plane.distance_to(to_global(transform.origin)),
+#				#velocity,
+#				player.plane.project(state.linear_velocity)
+#			)
+		#prints(transform.origin, global_transform.origin, player.transform.xform(transform.origin))
+		prints(global_transform.origin, player.plane.project(global_transform.origin), player.plane.distance_to(global_transform.origin))
+		#prints(velocity, player.plane.project(velocity).normalized())
 		state.set_linear_velocity(velocity)
-#			velocity = state.linear_velocity.normalized() * speed #* state.get_step())
-#			velocity.z = 0
-#			velocity = player.transform.basis.xform(velocity)
-#		set_linear_velocity(velocity)
-		#	prints(velocity.normalized(), state.linear_velocity.normalized())
-		
-		#velocity = state.linear_velocity.normalized() * speed #* state.get_step())
-		#velocity.z = 0
-		#prints(velocity, state.get_velocity_at_local_position(velocity))
-		#velocity = player.global_transform.basis.xform(velocity)
-		#prints(velocity, player.transform.basis.xform(velocity))
-		#set_linear_velocity(velocity)
-		#set_linear_velocity(player.transform.basis.xform(velocity))
-		
-#		var count = state.get_contact_count()
+#		
+		var count = state.get_contact_count()
 #		if count > 0:
 #			for i in range(count):
 #				prints(state.get_contact_local_normal(i), state.get_contact_local_position(i))
@@ -80,7 +73,7 @@ func set_radius(value: float) -> void:
 func pause() -> void:
 	if status != PARKED:
 		if status == PAUSED:
-			start(velocity)
+			start(direction)
 		else:
 			stop()
 			status = PAUSED
@@ -91,16 +84,21 @@ func reset() -> void:
 	status = PARKED
 
 
-func start(direction: Vector3) -> void:
+func start(dir: Vector3) -> void:
 	#move(direction)
-	velocity = direction.normalized() * speed #* get_physics_process_delta_time())
+	if !dir.is_normalized():
+		pass
+	
+	direction = player.plane.project(dir.normalized()).normalized()
+	velocity  = direction * speed
+	
 	set_linear_velocity(velocity)
 	status = HOVERED
 
 
-func move(direction: Vector3) -> void:
+func move(dir: Vector3) -> void:
 	#if !direction.is_normalized():
-	velocity = direction.normalized() * speed #* get_physics_process_delta_time())
+	velocity = dir.normalized() * speed #* get_physics_process_delta_time())
 	#velocity.z = 0
 	#velocity = player.transform.basis.xform(velocity)
 	set_linear_velocity(velocity)
