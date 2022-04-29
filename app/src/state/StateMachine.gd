@@ -11,6 +11,7 @@ var state: State
 
 func _ready():
 	yield(owner, "ready")
+	
 	for child in get_children():
 		child.state_machine = self
 	

@@ -82,6 +82,7 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
+window/size/height=576
 window/size/always_on_top=true
 
 [global]
