@@ -14,40 +14,19 @@ var status    := PARKED
 
 func _ready():
 	set_radius(radius)
-	#print(Vector3(7,3,1).project(Vector3(2,1,0)))
-#	yield(owner, "ready")
-#	prints(player.transform.basis, player.plane)
-#	prints(player.plane)
-#	prints(transform.origin)
-	#prints(player, player.transform.basis.xform(Vector3(1, 0, 1)))
-	#set_axis_lock(PhysicsServer.BODY_AXIS_LINEAR_Z, true)
 
 
 func _integrate_forces(state):
 	if status == HOVERED:
-		var dir = state.linear_velocity.normalized()
-		if !direction.is_equal_approx(dir):
-			
-			#state.linear_velocity
-			
-			direction = player.plane.project(dir).normalized()
+		if !direction.is_equal_approx(state.linear_velocity.normalized()):
+			direction = player.plane.project(state.linear_velocity).normalized()
 			velocity  = direction * speed
-			#move(state.linear_velocity)
-		#else:
-		#prints(velocity, "X:", player.transform.basis.x, velocity.project(player.transform.basis.x), "Y:", player.transform.basis.y, velocity.project(player.transform.basis.y))
-		#prints(velocity, velocity.project(Vector3(1,1,0)), " - ", Vector3(1,1,0).project(velocity))
-#		prints(
-#				player.plane.is_point_over(state.linear_velocity),
-#				player.plane.has_point(to_global(transform.origin), 1.0),
-#				player.plane.distance_to(to_global(transform.origin)),
-#				#velocity,
-#				player.plane.project(state.linear_velocity)
-#			)
-		#prints(transform.origin, global_transform.origin, player.transform.xform(transform.origin))
-		prints(global_transform.origin, player.plane.project(global_transform.origin), player.plane.distance_to(global_transform.origin))
-		#prints(velocity, player.plane.project(velocity).normalized())
-		state.set_linear_velocity(velocity)
-#		
+			state.transform.origin = player.plane.project(state.transform.origin)
+			state.transform = state.transform.orthonormalized()
+			state.transform = state.transform.scaled(scale)
+		
+		state.linear_velocity = velocity
+		
 #		var count = state.get_contact_count()
 #		if count > 0:
 #			for i in range(count):

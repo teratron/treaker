@@ -35,19 +35,10 @@ func _ready():
 	paddle.set_ball_position(ball.radius)
 	ball_parked_position()
 	ball.player = self
-	
-	#prints(transform.basis, Plane(transform.basis.z, 0)) #, Plane.PLANE_XY
-	#((1, 0, 0), (0, 0.984808, -0.173648), (0, 0.173648, 0.984807)) ((1, 0, 0), (0, 1, 0), (0, 0, 1))
-	#prints(transform.basis, rotor.transform.basis)
-	#(1, 0.984808, 0.173648) (1, 1, 0)
-	#prints(transform.basis.xform(Vector3(1, 0, 1)), rotor.transform.basis.xform(Vector3(1, 0, 1)))
-	
-	#prints(global_transform.basis, rotor.global_transform.basis)
-	#print(deg2rad(10))
-	#prints(transform.basis.xform(Vector3(0,1,0)), ball.player.transform.basis.xform(Vector3(0,1,0)))
 
 
 #func _physics_process(_delta):
+	#prints(ball.transform.origin, ball.global_transform.origin)
 	#rotor.transform = rotor.transform.orthonormalized()
 	#transform = transform.orthonormalized()
 	#transform = transform.scaled(scale)
@@ -58,8 +49,11 @@ func unhandled_input(event):
 		if event.is_action_pressed("use_shot"):
 			if ball.status == ball.PARKED:
 				ball.start(transform.basis.xform(ball.transform.basis.y))
+			
+			if ball.status == ball.PAUSED:
+				ball.pause()
 		
-		if event.is_action_pressed("ui_pause") || (event.is_action_pressed("use_shot") && ball.status == ball.PAUSED):
+		if event.is_action_pressed("ui_pause"):
 			ball.pause()
 		
 		if event.is_action_pressed("ui_restart"):
@@ -76,7 +70,6 @@ func process(delta):
 			rotor.transform.basis = rotor.transform.basis.rotated(Vector3(0, 0, 1), angular_speed * delta * motion.x)
 			
 			if ball.status == ball.PARKED:
-				#prints(rotor.transform.basis, rotor.transform.basis.xform(ball.velocity))
 				ball_parked_position()
 		
 		if is_center_look:

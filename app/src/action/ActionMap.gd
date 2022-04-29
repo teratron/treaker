@@ -1,4 +1,4 @@
-class_name ActionMap extends Resource
+class_name ActionMap
 
 
 func add_action_map_list(list) -> void:
