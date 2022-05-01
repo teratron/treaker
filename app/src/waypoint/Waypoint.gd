@@ -1,7 +1,7 @@
 extends Control
 
 
-const MARGIN = 8
+const MARGIN = 4
 
 export var text   := "Waypoint" setget set_text
 export var sticky := true # If `true`, the waypoint sticks to the viewport's edges when moving off-screen.
@@ -15,6 +15,7 @@ onready var marker = $Marker
 func _ready():
 	self.text = text
 	
+	#assert(parent != null)
 	if not parent is Spatial:
 		push_error("The waypoint's parent node must inherit from Spatial.")
 

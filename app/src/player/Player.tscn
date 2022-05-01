@@ -48,9 +48,7 @@ visible = false
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 
-[node name="WaypointAnchor" type="Position3D" parent="Ball"]
-
-[node name="Waypoint" parent="Ball/WaypointAnchor" instance=ExtResource( 4 )]
+[node name="Waypoint" parent="Ball" instance=ExtResource( 4 )]
 
 [node name="ActionPlayer" type="Node" parent="."]
 script = ExtResource( 8 )
