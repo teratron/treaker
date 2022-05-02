@@ -25,6 +25,8 @@ func _process(_delta):
 	var unprojected_position = camera.unproject_position(parent_translation)
 	var is_behind = camera_transform.basis.z.dot(parent_translation - camera_translation) > 0
 	
+	#print(camera_transform.basis.z.dot(parent_translation - camera_translation))
+	
 	if !sticky:
 		rect_position = unprojected_position
 		visible = !is_behind
@@ -38,9 +40,6 @@ func _process(_delta):
 			else get_viewport().size
 		)
 	
-	# We need to handle the axes differently.
-	# For the screen's X axis, the projected position is useful to us,
-	# but we need to force it to the side if it's also behind.
 	if is_behind:
 		if unprojected_position.x < viewport_base_size.x / 2:
 			unprojected_position.x = viewport_base_size.x - MARGIN
@@ -65,8 +64,6 @@ func _process(_delta):
 	
 	#label.visible = true
 	rect_rotation = 0
-	# Used to display a diagonal arrow when the waypoint is displayed in
-	# one of the screen corners.
 	var overflow = 0
 	
 	if rect_position.x <= MARGIN:
