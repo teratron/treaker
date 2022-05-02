@@ -20,8 +20,6 @@ func _integrate_forces(state):
 	if status == HOVERED:
 		if !direction.is_equal_approx(state.linear_velocity.normalized()):
 			move(state.linear_velocity)
-#			direction = player.plane.project(state.linear_velocity).normalized()
-#			velocity  = direction * speed
 			state.transform.origin = player.plane.project(state.transform.origin)
 			state.transform = state.transform.orthonormalized()
 			state.transform = state.transform.scaled(scale)
@@ -33,12 +31,6 @@ func _integrate_forces(state):
 #			for i in range(count):
 #				prints(state.get_contact_local_normal(i), state.get_contact_local_position(i))
 #				state.linear_velocity *= state.get_contact_local_normal(i)
-
-
-#func _physics_process(delta):
-#	if status == HOVERED:
-#		prints(velocity.normalized(), linear_velocity, player.transform.basis)
-#		#print(deg2rad(30))
 
 
 func set_radius(value: float) -> void:
@@ -64,9 +56,6 @@ func reset() -> void:
 
 
 func start(dir: Vector3) -> void:
-#	direction = player.plane.project(dir).normalized()
-#	velocity  = direction * speed
-	
 	move(dir)
 	linear_velocity = velocity
 	status = HOVERED
