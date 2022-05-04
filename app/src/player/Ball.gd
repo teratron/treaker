@@ -21,8 +21,7 @@ func _integrate_forces(state):
 		if !direction.is_equal_approx(state.linear_velocity.normalized()):
 			move(state.linear_velocity)
 			state.transform.origin = player.plane.project(state.transform.origin)
-			state.transform = state.transform.orthonormalized()
-			state.transform = state.transform.scaled(scale)
+			state.transform = state.transform.orthonormalized().scaled(scale)
 		
 		state.linear_velocity = velocity
 		

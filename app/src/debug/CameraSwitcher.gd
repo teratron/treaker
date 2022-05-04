@@ -5,7 +5,7 @@ var index:     int = -1
 var lastIndex: int
 var length:    int
 var list:      Array
-var listEvent: Array
+#var listEvent: Array
 
 
 func _ready():
@@ -21,12 +21,12 @@ func _ready():
 				node.current = false
 		i += 1
 	
-	if InputMap.has_action("toggle_camera"):
-		listEvent = InputMap.get_action_list("toggle_camera")
+#	if InputMap.has_action("toggle_camera"):
+#		listEvent = InputMap.get_action_list("toggle_camera")
 
 
 func _input(event):
-#	if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
+	#if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
 	if (event is InputEventKey || event is InputEventMouseButton) && event.pressed:
 		if event.is_action_pressed("toggle_camera"):
 			list[index].current = false
