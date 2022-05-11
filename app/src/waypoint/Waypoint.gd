@@ -3,7 +3,7 @@ extends Control
 
 const MARGIN = 4
 
-export var sticky := true
+#export var sticky := true
 
 onready var camera := get_viewport().get_camera()
 onready var parent := get_parent()
@@ -29,10 +29,10 @@ func _process(_delta):
 	var is_behind = camera.is_position_behind(parent_translation)
 	#prints(is_behind, camera.is_position_behind(parent_translation))
 	
-	if !sticky:
-		rect_position = unprojected_position
-		visible = !is_behind
-		return
+#	if !sticky:
+#		rect_position = unprojected_position
+#		visible = !is_behind
+#		return
 	
 	var viewport_size = viewport.get_size_override()
 	viewport_size = (
