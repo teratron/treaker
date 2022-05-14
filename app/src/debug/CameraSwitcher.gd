@@ -25,7 +25,7 @@ func _ready():
 #		listEvent = InputMap.get_action_list("toggle_camera")
 
 
-func _input(event):
+func _unhandled_input(event):
 	#if InputMap.has_action("toggle_camera") && InputMap.action_has_event("toggle_camera", event):
 	if (event is InputEventKey || event is InputEventMouseButton) && event.pressed:
 		if event.is_action_pressed("toggle_camera"):
