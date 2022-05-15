@@ -41,13 +41,13 @@ func _process(_delta):
 		)
 	#print(position)
 	if is_behind:
-		visible = true
+		#visible = true
 		if position.x < viewport_size.x / 2:
 			position.x = viewport_size.x - MARGIN
 		else:
 			position.x = MARGIN
-	elif position.x > 0 && position.x < viewport_size.x:
-		visible = false
+#	elif position.x > 0 && position.x < viewport_size.x:
+#		visible = false
 	
 	if is_behind || position.x < MARGIN || position.x > viewport_size.x - MARGIN:
 		var look = camera_transform.looking_at(parent_translation, Vector3.UP)

@@ -2,11 +2,11 @@ extends Spatial
 
 
 #var cameraSwitcher = CameraSwitcher.new()
-
-
+#
+#
 #func _ready():
 #	add_child(cameraSwitcher)
-	
+#
 #	print(get_viewport())
 #	print(get_viewport().get_children())
 #	print(get_viewport().get_children()[1].get_children())

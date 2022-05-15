@@ -1,7 +1,7 @@
 class_name ActionMachine extends StateMachine
 
-onready var action_player := get_node("/root/World/Player/ActionPlayer") as State
-onready var action_debug  := get_node("/root/World/Debug/CameraFloat/ActionDebug") as State
+#onready var action_player := get_node("/root/World/Player/ActionPlayer") as State
+#onready var action_debug  := get_node("/root/World/Debug/CameraFloat/ActionDebug") as State
 
 func _ready():
 	yield(owner, "ready")
@@ -10,8 +10,8 @@ func _ready():
 	state.state_machine = self
 
 
-func _unhandled_input(event):
-	if (event is InputEventKey || event is InputEventMouseButton) && event.pressed:
-		if event.is_action_pressed("toggle_camera"):
-			print("+++")
-			pass
+#func _unhandled_input(event):
+#	if (event is InputEventKey || event is InputEventMouseButton) && event.pressed:
+#		if event.is_action_pressed("toggle_camera"):
+#			print("+++")
+#			pass

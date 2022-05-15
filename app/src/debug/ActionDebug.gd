@@ -10,8 +10,8 @@ func _ready():
 	assert(camera != null)
 
 
-func input(event):
-	camera.input(event)
+func unhandled_input(event):
+	camera.unhandled_input(event)
 
 
 func process(delta):
