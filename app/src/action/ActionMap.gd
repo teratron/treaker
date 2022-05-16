@@ -1,4 +1,4 @@
-class_name ActionMap
+class_name ActionMap extends Node
 
 
 func add_action_map_list(list) -> void:
